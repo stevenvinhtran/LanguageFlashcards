@@ -1,6 +1,10 @@
 package com.stevenvinhtran.languageflashcards.Controller;
 
+import com.stevenvinhtran.languageflashcards.Model.CSVLoader;
+import com.stevenvinhtran.languageflashcards.Model.Flashcard;
 import com.stevenvinhtran.languageflashcards.Model.SceneSwitcher;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -8,6 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
@@ -24,16 +29,10 @@ public class BrowserController {
     private AnchorPane browserAnchorPane;
 
     @FXML
-    private TableColumn<?, ?> definitionColumn;
-
-    @FXML
     private Button deleteButton;
 
     @FXML
     private Button editButton;
-
-    @FXML
-    private TableColumn<?, ?> reviewDateColumn;
 
     @FXML
     private Label sortByLabel;
@@ -41,14 +40,11 @@ public class BrowserController {
     @FXML
     private SplitMenuButton sortByMenu;
 
-    @FXML
-    private TableColumn<?, ?> termColumn;
-
-    @FXML
-    private TableView<?> flashcardsTable;
-
-    @FXML
-    private TableColumn<?, ?> typeColumn;
+    @FXML private TableView<Flashcard> flashcardsTable;
+    @FXML private TableColumn<Flashcard, String> termColumn;
+    @FXML private TableColumn<Flashcard, String> definitionColumn;
+    @FXML private TableColumn<Flashcard, String> typeColumn;
+    @FXML private TableColumn<Flashcard, String> reviewDateColumn;
 
     @FXML
     void deleteTerm(ActionEvent event) {
@@ -73,6 +69,17 @@ public class BrowserController {
     @FXML
     void sortTerms(ActionEvent event) {
 
+    }
+
+    @FXML
+    public void initialize() {
+        termColumn.setCellValueFactory(cellData -> cellData.getValue().termProperty());
+        definitionColumn.setCellValueFactory(cellData -> cellData.getValue().definitionProperty());
+        typeColumn.setCellValueFactory(cellData -> cellData.getValue().typeProperty());
+        reviewDateColumn.setCellValueFactory(cellData -> cellData.getValue().reviewDateProperty());
+
+        ObservableList<Flashcard> flashcards = FXCollections.observableList(CSVLoader.loadFlashcards());
+        flashcardsTable.setItems(flashcards);
     }
 
 }
