@@ -4,6 +4,8 @@ module com.example.languageflashcards {
 
     requires com.dlsc.formsfx;
 
-    opens com.example.languageflashcards to javafx.fxml;
-    exports com.example.languageflashcards;
+    opens com.stevenvinhtran.languageflashcards to javafx.fxml;
+    exports com.stevenvinhtran.languageflashcards;
+    exports com.stevenvinhtran.languageflashcards.Controller;
+    opens com.stevenvinhtran.languageflashcards.Controller to javafx.fxml;
 }
