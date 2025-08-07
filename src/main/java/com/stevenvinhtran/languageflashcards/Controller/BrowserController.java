@@ -1,6 +1,6 @@
 package com.stevenvinhtran.languageflashcards.Controller;
 
-import com.stevenvinhtran.languageflashcards.Model.CSVLoader;
+import com.stevenvinhtran.languageflashcards.Model.CSVProcessor;
 import com.stevenvinhtran.languageflashcards.Model.Flashcard;
 import com.stevenvinhtran.languageflashcards.Model.SceneSwitcher;
 import javafx.collections.FXCollections;
@@ -48,12 +48,14 @@ public class BrowserController {
 
     @FXML
     void deleteTerm(ActionEvent event) {
-
+        Flashcard selectedFlashcard = flashcardsTable.getSelectionModel().getSelectedItem();
+        CSVProcessor.deleteFlashcard(selectedFlashcard);
+        loadFlashcardTable();
     }
 
     @FXML
-    void goToAddTermScene(ActionEvent event) {
-
+    void goToAddTermScene(ActionEvent event) throws IOException {
+        new SceneSwitcher("add-flashcard-view.fxml", "Browser");
     }
 
     @FXML
@@ -79,7 +81,7 @@ public class BrowserController {
 
     @FXML
     public void loadFlashcardTable() {
-        ObservableList<Flashcard> flashcards = FXCollections.observableList(CSVLoader.loadFlashcards());
+        ObservableList<Flashcard> flashcards = FXCollections.observableList(CSVProcessor.loadFlashcards());
         flashcardsTable.setItems(flashcards);
     }
 

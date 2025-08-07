@@ -9,13 +9,13 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class EditFlashcardController {
-    private Flashcard flashcard;
-    private Flashcard oldFlashcard = new Flashcard("","","","");
+public class AddFlashcardController {
+    private Flashcard flashcard = new Flashcard("","","","");
     private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
     @FXML
@@ -28,16 +28,10 @@ public class EditFlashcardController {
     private TextArea definitionTextArea;
 
     @FXML
-    private AnchorPane editFlashcardAnchorPane;
+    private AnchorPane addFlashcardAnchorPane;
 
     @FXML
-    private Text reviewDateLabel;
-
-    @FXML
-    private DatePicker reviewDatePicker;
-
-    @FXML
-    private Button saveChangesButton;
+    private Button createFlashcardButton;
 
     @FXML
     private Label termLabel;
@@ -63,36 +57,33 @@ public class EditFlashcardController {
     }
 
     @FXML
-    void onSaveChangesClick(ActionEvent event) throws IOException {
-        flashcard.setTerm(termTextField.getText());
-        flashcard.setDefinition(definitionTextArea.getText());
-        flashcard.setType(typeMenuButton.getText());
-        String date = reviewDatePicker.getValue().format(formatter);
-        flashcard.setReviewDate(date);
+    void onCreateFlashcardClick(ActionEvent event) throws IOException {
+        String term = termTextField.getText();
+        String definition = definitionTextArea.getText();
+        String type = typeMenuButton.getText();
+        LocalDate tomorrow = LocalDate.now().plusDays(1);
+        String date = tomorrow.format(formatter);
 
-        CSVProcessor.updateFlashcard(oldFlashcard, flashcard);
+        if (term.isBlank() && definition.isBlank()) {
+            JOptionPane.showMessageDialog(null, "Term and Definition are blank", "Error", JOptionPane.ERROR_MESSAGE);
+        } else if (term.isBlank()) {
+            JOptionPane.showMessageDialog(null, "Term field is blank", "Error", JOptionPane.ERROR_MESSAGE);
+        } else if (definition.isBlank()) {
+            JOptionPane.showMessageDialog(null, "Definition area is blank", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            flashcard.setTerm(term);
+            flashcard.setDefinition(definition);
+            flashcard.setType(type);
+            flashcard.setReviewDate(date);
 
-        new SceneSwitcher("browser-view.fxml", "Browser");
+            CSVProcessor.addFlashcard(flashcard);
+
+            new SceneSwitcher("browser-view.fxml", "Browser");
+        }
     }
 
     @FXML
     void returnToBrowserScene(ActionEvent event) throws IOException {
         new SceneSwitcher("browser-view.fxml", "Browser");
-    }
-
-    public void setFlashcard(Flashcard flashcard) {
-        this.flashcard = flashcard;
-
-        oldFlashcard.setTerm(flashcard.getTerm());
-        oldFlashcard.setDefinition(flashcard.getDefinition());
-        oldFlashcard.setType(flashcard.getType());
-        oldFlashcard.setReviewDate(flashcard.getReviewDate());
-
-        LocalDate date = LocalDate.parse(flashcard.getReviewDate(), formatter);
-
-        termTextField.setText(flashcard.getTerm());
-        definitionTextArea.setText(flashcard.getDefinition());
-        typeMenuButton.setText(flashcard.getType());
-        reviewDatePicker.setValue(date);
     }
 }
