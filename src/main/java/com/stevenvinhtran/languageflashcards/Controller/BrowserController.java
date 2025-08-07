@@ -7,11 +7,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.SplitMenuButton;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 
 import javax.swing.*;
@@ -37,8 +33,15 @@ public class BrowserController {
     @FXML
     private Label sortByLabel;
 
-    @FXML
-    private SplitMenuButton sortByMenu;
+    @FXML private SplitMenuButton sortByMenu;
+    @FXML private MenuItem todayMenuItem;
+    @FXML private MenuItem threeDaysMenuItem;
+    @FXML private MenuItem sevenDaysMenuItem;
+    @FXML private MenuItem thirtyDaysMenuItem;
+    @FXML private MenuItem threeMonthsMenuItem;
+    @FXML private MenuItem sixMonthsMenuItem;
+    @FXML private MenuItem twelveMonthsMenuItem;
+    @FXML private MenuItem allReviewsMenuItem;
 
     @FXML private TableView<Flashcard> flashcardsTable;
     @FXML private TableColumn<Flashcard, String> termColumn;
@@ -74,13 +77,26 @@ public class BrowserController {
         new SceneSwitcher("home-view.fxml", "Home");
     }
 
-    @FXML
-    void sortTerms(ActionEvent event) {
+    @FXML void setTodayMenuItem() {sortByMenu.setText(todayMenuItem.getText()); sortFlashcards();};
+    @FXML void setThreeDaysMenuItem() {sortByMenu.setText(threeDaysMenuItem.getText()); sortFlashcards();};
+    @FXML void setSevenDaysMenuItem() {sortByMenu.setText(sevenDaysMenuItem.getText()); sortFlashcards();};
+    @FXML void setThirtyDaysMenuItem() {sortByMenu.setText(thirtyDaysMenuItem.getText()); sortFlashcards();};
+    @FXML void setThreeMonthsMenuItem() {sortByMenu.setText(threeMonthsMenuItem.getText()); sortFlashcards();};
+    @FXML void setSixMonthsMenuItem() {sortByMenu.setText(sixMonthsMenuItem.getText()); sortFlashcards();};
+    @FXML void setTwelveMonthsMenuItem() {sortByMenu.setText(twelveMonthsMenuItem.getText()); sortFlashcards();};
+    @FXML void setAllReviewsMenuItem() {sortByMenu.setText(allReviewsMenuItem.getText()); sortFlashcards();};
 
+    @FXML
+    void sortFlashcards() {
+        ObservableList<Flashcard> sortedFlashcards = FXCollections.observableList(CSVProcessor.loadFlashcards());
+        String selection = sortByMenu.getText();
+        System.out.println(selection);
+        // All Flashcards, Today, Next 7 Days, Next 30 days, Next 3 months, Next 6 months, Next 12 months
     }
 
     @FXML
     public void loadFlashcardTable() {
+        sortByMenu.setText(allReviewsMenuItem.getText());
         ObservableList<Flashcard> flashcards = FXCollections.observableList(CSVProcessor.loadFlashcards());
         flashcardsTable.setItems(flashcards);
     }

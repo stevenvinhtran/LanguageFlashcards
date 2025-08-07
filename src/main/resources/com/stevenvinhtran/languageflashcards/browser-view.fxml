@@ -42,10 +42,16 @@
                   <Font size="42.0" />
                </font>
             </Label>
-            <SplitMenuButton fx:id="sortByMenu" mnemonicParsing="false" onAction="#sortTerms" prefHeight="76.0" prefWidth="703.0" text="Test">
+            <SplitMenuButton fx:id="sortByMenu" mnemonicParsing="false" prefHeight="76.0" prefWidth="703.0" text="All Reviews">
               <items>
-                <MenuItem mnemonicParsing="false" text="Action 1" />
-                <MenuItem mnemonicParsing="false" text="Action 2" />
+                <MenuItem fx:id="todayMenuItem" mnemonicParsing="false" onAction="#setTodayMenuItem" text="Today" />
+                <MenuItem fx:id="threeDaysMenuItem" mnemonicParsing="false" onAction="#setThreeDaysMenuItem" text="Next 3 days" />
+                  <MenuItem fx:id="sevenDaysMenuItem" mnemonicParsing="false" onAction="#setSevenDaysMenuItem" text="Next 7 days" />
+                  <MenuItem fx:id="thirtyDaysMenuItem" mnemonicParsing="false" onAction="#setThirtyDaysMenuItem" text="Next 30 days" />
+                  <MenuItem fx:id="threeMonthsMenuItem" mnemonicParsing="false" onAction="#setThreeMonthsMenuItem" text="Next 3 months" />
+                  <MenuItem fx:id="sixMonthsMenuItem" mnemonicParsing="false" onAction="#setSixMonthsMenuItem" text="Next 6 months" />
+                  <MenuItem fx:id="twelveMonthsMenuItem" mnemonicParsing="false" onAction="#setTwelveMonthsMenuItem" text="Next 12 months" />
+                  <MenuItem fx:id="allReviewsMenuItem" mnemonicParsing="false" onAction="#setAllReviewsMenuItem" text="All Reviews" />
               </items>
                <font>
                   <Font size="33.0" />
