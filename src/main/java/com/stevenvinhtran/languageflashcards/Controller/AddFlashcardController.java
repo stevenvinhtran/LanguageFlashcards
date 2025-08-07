@@ -59,11 +59,10 @@ public class AddFlashcardController {
         } else if (definition.isBlank()) {
             JOptionPane.showMessageDialog(null, "Definition area is blank", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
-            // Initialize SM-2 SRS parameters
             flashcard = new Flashcard(
                     term, definition, type,
-                    reviewDate, now, // dateAdded is now
-                    0, 2.5, 1 // repetitions, easeFactor, interval
+                    reviewDate, now,
+                    0, 2.5, 0, true
             );
 
             CSVProcessor.addFlashcard(flashcard);

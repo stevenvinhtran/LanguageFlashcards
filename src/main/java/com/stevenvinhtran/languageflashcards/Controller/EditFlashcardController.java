@@ -53,15 +53,8 @@ public class EditFlashcardController {
     @FXML private TextField easeFactorField;
     @FXML private TextField intervalField;
 
-    @FXML
-    void onVocabularyItemSelect() {
-        typeMenuButton.setText(vocabularyMenuItem.getText());
-    }
-
-    @FXML
-    void onGrammarItemSelect() {
-        typeMenuButton.setText(grammarMenuItem.getText());
-    }
+    @FXML void onVocabularyItemSelect() { typeMenuButton.setText(vocabularyMenuItem.getText()); }
+    @FXML void onGrammarItemSelect() { typeMenuButton.setText(grammarMenuItem.getText()); }
 
     @FXML
     void onSaveChangesClick() throws IOException {
@@ -72,6 +65,7 @@ public class EditFlashcardController {
         flashcard.setRepetitions(Integer.parseInt(repetitionsField.getText()));
         flashcard.setEaseFactor(Double.parseDouble(easeFactorField.getText()));
         flashcard.setInterval(Integer.parseInt(intervalField.getText()));
+        // isNewCard will not be changed
 
         CSVProcessor.updateFlashcard(oldFlashcard, flashcard);
         new SceneSwitcher("browser-view.fxml", "Browser");
@@ -85,9 +79,15 @@ public class EditFlashcardController {
     public void setFlashcard(Flashcard flashcard) {
         this.flashcard = flashcard;
         this.oldFlashcard = new Flashcard(
-                flashcard.getTerm(), flashcard.getDefinition(), flashcard.getType(),
-                flashcard.getReviewDate(), flashcard.getDateAdded(),
-                flashcard.getRepetitions(), flashcard.getEaseFactor(), flashcard.getInterval()
+                flashcard.getTerm(),
+                flashcard.getDefinition(),
+                flashcard.getType(),
+                flashcard.getReviewDate(),
+                flashcard.getDateAdded(),
+                flashcard.getRepetitions(),
+                flashcard.getEaseFactor(),
+                flashcard.getInterval(),
+                flashcard.getIsNewCard()
         );
 
         termTextField.setText(flashcard.getTerm());
@@ -97,5 +97,6 @@ public class EditFlashcardController {
         repetitionsField.setText(String.valueOf(flashcard.getRepetitions()));
         easeFactorField.setText(String.valueOf(flashcard.getEaseFactor()));
         intervalField.setText(String.valueOf(flashcard.getInterval()));
+        // isNewCard will not be changed, so there is no need to have it here
     }
 }

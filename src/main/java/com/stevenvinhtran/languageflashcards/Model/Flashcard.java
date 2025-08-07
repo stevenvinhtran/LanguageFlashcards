@@ -1,5 +1,6 @@
 package com.stevenvinhtran.languageflashcards.Model;
 
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import java.time.LocalDateTime;
@@ -13,10 +14,11 @@ public class Flashcard {
     private final SimpleObjectProperty<Integer> repetitions;
     private final SimpleObjectProperty<Double> easeFactor;
     private final SimpleObjectProperty<Integer> interval;
+    private final SimpleBooleanProperty isNewCard;
 
     public Flashcard(String term, String definition, String type,
                      LocalDateTime reviewDate, LocalDateTime dateAdded,
-                     int repetitions, double easeFactor, int interval) {
+                     int repetitions, double easeFactor, int interval, boolean isNewCard) {
         this.term = new SimpleStringProperty(term);
         this.definition = new SimpleStringProperty(definition);
         this.type = new SimpleStringProperty(type);
@@ -25,6 +27,7 @@ public class Flashcard {
         this.repetitions = new SimpleObjectProperty<>(repetitions);
         this.easeFactor = new SimpleObjectProperty<>(easeFactor);
         this.interval = new SimpleObjectProperty<>(interval);
+        this.isNewCard = new SimpleBooleanProperty(isNewCard);
     }
 
     // Getters
@@ -36,6 +39,7 @@ public class Flashcard {
     public int getRepetitions() { return repetitions.get(); }
     public double getEaseFactor() { return easeFactor.get(); }
     public int getInterval() { return interval.get(); }
+    public boolean getIsNewCard() { return isNewCard.get(); }
 
     // Setters
     public void setTerm(String term) { this.term.set(term); }
@@ -46,6 +50,7 @@ public class Flashcard {
     public void setRepetitions(int repetitions) { this.repetitions.set(repetitions); }
     public void setEaseFactor(double easeFactor) { this.easeFactor.set(easeFactor); }
     public void setInterval(int interval) { this.interval.set(interval); }
+    public void setIsNewCard(boolean isNewCard) { this.isNewCard.set(isNewCard); }
 
     // Property getters
     public SimpleStringProperty termProperty() { return term; }
@@ -56,4 +61,5 @@ public class Flashcard {
     public SimpleObjectProperty<Integer> repetitionsProperty() { return repetitions; }
     public SimpleObjectProperty<Double> easeFactorProperty() { return easeFactor; }
     public SimpleObjectProperty<Integer> intervalProperty() { return interval; }
+    public SimpleBooleanProperty isNewCardProperty() { return isNewCard; }
 }

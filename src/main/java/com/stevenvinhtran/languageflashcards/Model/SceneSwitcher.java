@@ -15,6 +15,8 @@ public class SceneSwitcher {
     public SceneSwitcher(String fxml, String stageTitle) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(LanguageFlashcardsApplication.class.getResource(fxml));
         Scene scene = new Scene(fxmlLoader.load(), 960, 720);
+        stage.setMinWidth(960);
+        stage.setMinHeight(720);
         stage.setTitle(stageTitle);
         stage.setScene(scene);
         stage.show();
@@ -28,6 +30,8 @@ public class SceneSwitcher {
     public SceneSwitcher(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(LanguageFlashcardsApplication.class.getResource(fxml));
         Scene scene = new Scene(fxmlLoader.load(), 960, 720);
+        stage.setMinWidth(960);
+        stage.setMinHeight(720);
         stage.setScene(scene);
         stage.show();
 
@@ -41,6 +45,8 @@ public class SceneSwitcher {
     public SceneSwitcher(Flashcard flashcard) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(LanguageFlashcardsApplication.class.getResource("edit-flashcard-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 960, 720);
+        stage.setMinWidth(960);
+        stage.setMinHeight(720);
         stage.setTitle("Edit Flashcard");
         stage.setScene(scene);
         stage.show();

@@ -25,17 +25,18 @@ public class CSVProcessor {
                 }
 
                 String[] values = line.split(",");
-                if (values.length >= 8) {
+                if (values.length >= 9) {
                     LocalDateTime reviewDate = LocalDateTime.parse(values[3], formatter);
                     LocalDateTime dateAdded = LocalDateTime.parse(values[4], formatter);
                     int repetitions = Integer.parseInt(values[5]);
                     double easeFactor = Double.parseDouble(values[6]);
                     int interval = Integer.parseInt(values[7]);
+                    boolean isNewCard = Boolean.parseBoolean(values[8]);
 
                     Flashcard flashcard = new Flashcard(
                             values[0], values[1], values[2],
                             reviewDate, dateAdded,
-                            repetitions, easeFactor, interval
+                            repetitions, easeFactor, interval, isNewCard
                     );
                     flashcards.add(flashcard);
                 }
@@ -80,7 +81,8 @@ public class CSVProcessor {
                                 updated.getDateAdded().format(formatter),
                                 String.valueOf(updated.getRepetitions()),
                                 String.valueOf(updated.getEaseFactor()),
-                                String.valueOf(updated.getInterval())
+                                String.valueOf(updated.getInterval()),
+                                String.valueOf(updated.getIsNewCard())
                         ));
                     } else {
                         lines.add(line);
@@ -134,7 +136,8 @@ public class CSVProcessor {
                         flashcard.getDateAdded().format(formatter),
                         String.valueOf(flashcard.getRepetitions()),
                         String.valueOf(flashcard.getEaseFactor()),
-                        String.valueOf(flashcard.getInterval())
+                        String.valueOf(flashcard.getInterval()),
+                        String.valueOf(flashcard.getIsNewCard())
                 ));
             }
         } catch (IOException e) {

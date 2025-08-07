@@ -11,7 +11,7 @@ import java.io.IOException;
 public class HomeController {
 
     @FXML
-    private Button editTermsButton;
+    private Button editFlashcardsButton;
 
     @FXML
     private AnchorPane homeAnchorPane;

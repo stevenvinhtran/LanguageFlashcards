@@ -33,9 +33,9 @@
                </Button>
             </children>
          </HBox>
-        <Button fx:id="editTermsButton" onAction="#goToBrowserScreen" prefHeight="90.0" prefWidth="240.0" text="Edit Terms" translateY="100.0">
+        <Button fx:id="editFlashcardsButton" onAction="#goToBrowserScreen" prefHeight="90.0" prefWidth="240.0" text="Edit Flashcards" translateY="100.0">
             <font>
-               <Font size="39.0" />
+               <Font size="30.0" />
             </font>
          </Button>
       </VBox>

@@ -14,6 +14,10 @@ public class LanguageFlashcardsApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(LanguageFlashcardsApplication.class.getResource("home-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 960, 720);
+        stage.setWidth(960);
+        stage.setHeight(720);
+        stage.setMinWidth(960);
+        stage.setMinHeight(720);
         stage.setTitle("Home");
         stage.setScene(scene);
         stage.show();
