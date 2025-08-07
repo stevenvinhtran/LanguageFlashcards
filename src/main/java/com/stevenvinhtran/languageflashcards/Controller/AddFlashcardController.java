@@ -13,9 +13,8 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class EditFlashcardController {
-    private Flashcard flashcard;
-    private Flashcard oldFlashcard = new Flashcard("","","","");
+public class AddFlashcardController {
+    private Flashcard flashcard = new Flashcard("","","","");
     private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
     @FXML
@@ -28,16 +27,10 @@ public class EditFlashcardController {
     private TextArea definitionTextArea;
 
     @FXML
-    private AnchorPane editFlashcardAnchorPane;
+    private AnchorPane addFlashcardAnchorPane;
 
     @FXML
-    private Text reviewDateLabel;
-
-    @FXML
-    private DatePicker reviewDatePicker;
-
-    @FXML
-    private Button saveChangesButton;
+    private Button createFlashcardButton;
 
     @FXML
     private Label termLabel;
@@ -63,14 +56,15 @@ public class EditFlashcardController {
     }
 
     @FXML
-    void onSaveChangesClick(ActionEvent event) throws IOException {
+    void onCreateFlashcardClick(ActionEvent event) throws IOException {
         flashcard.setTerm(termTextField.getText());
         flashcard.setDefinition(definitionTextArea.getText());
         flashcard.setType(typeMenuButton.getText());
-        String date = reviewDatePicker.getValue().format(formatter);
+        LocalDate tomorrow = LocalDate.now().plusDays(1);
+        String date = tomorrow.format(formatter);
         flashcard.setReviewDate(date);
 
-        CSVProcessor.updateFlashcard(oldFlashcard, flashcard);
+        CSVProcessor.addFlashcard(flashcard);
 
         new SceneSwitcher("browser-view.fxml", "Browser");
     }
@@ -78,21 +72,5 @@ public class EditFlashcardController {
     @FXML
     void returnToBrowserScene(ActionEvent event) throws IOException {
         new SceneSwitcher("browser-view.fxml", "Browser");
-    }
-
-    public void setFlashcard(Flashcard flashcard) {
-        this.flashcard = flashcard;
-
-        oldFlashcard.setTerm(flashcard.getTerm());
-        oldFlashcard.setDefinition(flashcard.getDefinition());
-        oldFlashcard.setType(flashcard.getType());
-        oldFlashcard.setReviewDate(flashcard.getReviewDate());
-
-        LocalDate date = LocalDate.parse(flashcard.getReviewDate(), formatter);
-
-        termTextField.setText(flashcard.getTerm());
-        definitionTextArea.setText(flashcard.getDefinition());
-        typeMenuButton.setText(flashcard.getType());
-        reviewDatePicker.setValue(date);
     }
 }
