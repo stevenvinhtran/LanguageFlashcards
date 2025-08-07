@@ -8,10 +8,12 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="editFlashcardAnchorPane" prefHeight="720.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.stevenvinhtran.languageflashcards.Controller.EditFlashcardController">
+<AnchorPane fx:id="editFlashcardAnchorPane" minHeight="720.0" minWidth="960.0" prefHeight="720.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.stevenvinhtran.languageflashcards.Controller.EditFlashcardController">
    <children>
       <TextField fx:id="termTextField" layoutX="80.0" layoutY="44.0" prefHeight="100.0" prefWidth="800.0" promptText="Term" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="44.0">
          <font>
@@ -47,5 +49,54 @@
          </font>
       </Button>
       <DatePicker fx:id="reviewDatePicker" layoutX="365.0" layoutY="596.0" prefHeight="70.0" prefWidth="230.0" AnchorPane.bottomAnchor="54.0" AnchorPane.leftAnchor="365.0" AnchorPane.rightAnchor="365.0" />
+      <VBox alignment="TOP_CENTER" layoutX="884.0" layoutY="260.0" prefHeight="200.0" prefWidth="74.0" AnchorPane.rightAnchor="1.0">
+         <children>
+            <Label fx:id="sm2SettingsLabel" text="SM-2 Settings">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <Label fx:id="sm2WarningLabel" text="(Best left untouched)">
+               <font>
+                  <Font size="8.0" />
+               </font>
+            </Label>
+            <HBox alignment="CENTER_LEFT" prefHeight="37.0" prefWidth="91.0" spacing="5.0">
+               <children>
+                  <Text fx:id="repetitionsText" strokeType="OUTSIDE" strokeWidth="0.0" text="Repetitions">
+                     <font>
+                        <Font size="8.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="repetitionsField" prefHeight="25.0" prefWidth="49.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="37.0" prefHeight="37.0" prefWidth="91.0" spacing="5.0">
+               <children>
+                  <Text fx:id="easeFactorText" strokeType="OUTSIDE" strokeWidth="0.0" text="Ease Factor">
+                     <font>
+                        <Font size="8.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="easeFactorField" prefHeight="25.0" prefWidth="49.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="74.0" prefHeight="37.0" prefWidth="91.0" spacing="5.0">
+               <children>
+                  <Text fx:id="intervalText" strokeType="OUTSIDE" strokeWidth="0.0" text="Interval">
+                     <font>
+                        <Font size="8.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="intervalField" prefHeight="25.0" prefWidth="49.0" />
+               </children>
+            </HBox>
+            <Text fx:id="defaultsText" strokeType="OUTSIDE" strokeWidth="0.0" text="Defaults for new card are 0, 2.5, 1" wrappingWidth="75.0">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Text>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>

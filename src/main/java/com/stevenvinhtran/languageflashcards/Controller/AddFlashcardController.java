@@ -7,40 +7,30 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
-
 import javax.swing.*;
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+import java.time.LocalDateTime;
 
 public class AddFlashcardController {
-    private Flashcard flashcard = new Flashcard("","","","");
-    private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    private Flashcard flashcard;
+    private LocalDateTime now = LocalDateTime.now();
 
     @FXML
     private Button backButton;
-
     @FXML
     private Label definitionLabel;
-
     @FXML
     private TextArea definitionTextArea;
-
     @FXML
     private AnchorPane addFlashcardAnchorPane;
-
     @FXML
     private Button createFlashcardButton;
-
     @FXML
     private Label termLabel;
-
     @FXML
     private TextField termTextField;
-
     @FXML
     private Label typeLabel;
-
     @FXML private MenuButton typeMenuButton;
     @FXML private MenuItem vocabularyMenuItem;
     @FXML private MenuItem grammarMenuItem;
@@ -60,8 +50,7 @@ public class AddFlashcardController {
         String term = termTextField.getText();
         String definition = definitionTextArea.getText();
         String type = typeMenuButton.getText();
-        LocalDate tomorrow = LocalDate.now().plusDays(1);
-        String date = tomorrow.format(formatter);
+        LocalDateTime reviewDate = now;
 
         if (term.isBlank() && definition.isBlank()) {
             JOptionPane.showMessageDialog(null, "Term and Definition are blank", "Error", JOptionPane.ERROR_MESSAGE);
@@ -70,13 +59,14 @@ public class AddFlashcardController {
         } else if (definition.isBlank()) {
             JOptionPane.showMessageDialog(null, "Definition area is blank", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
-            flashcard.setTerm(term);
-            flashcard.setDefinition(definition);
-            flashcard.setType(type);
-            flashcard.setReviewDate(date);
+            // Initialize SM-2 SRS parameters
+            flashcard = new Flashcard(
+                    term, definition, type,
+                    reviewDate, now, // dateAdded is now
+                    0, 2.5, 1 // repetitions, easeFactor, interval
+            );
 
             CSVProcessor.addFlashcard(flashcard);
-
             new SceneSwitcher("browser-view.fxml", "Browser");
         }
     }

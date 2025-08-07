@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="addFlashcardAnchorPane" prefHeight="720.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.stevenvinhtran.languageflashcards.Controller.AddFlashcardController">
+<AnchorPane fx:id="addFlashcardAnchorPane" minHeight="720.0" minWidth="960.0" prefHeight="720.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.stevenvinhtran.languageflashcards.Controller.AddFlashcardController">
    <children>
       <TextField fx:id="termTextField" layoutX="80.0" layoutY="44.0" prefHeight="100.0" prefWidth="800.0" promptText="Term" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="44.0">
          <font>

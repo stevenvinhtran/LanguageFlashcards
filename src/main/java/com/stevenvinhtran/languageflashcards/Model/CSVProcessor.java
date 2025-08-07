@@ -3,11 +3,14 @@ package com.stevenvinhtran.languageflashcards.Model;
 import javax.swing.*;
 import java.io.*;
 import java.nio.file.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CSVProcessor {
     private static final Path CSV_PATH = Paths.get("data/flashcards.csv");
+    private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
     public static ArrayList<Flashcard> loadFlashcards() {
         ArrayList<Flashcard> flashcards = new ArrayList<>();
@@ -22,8 +25,18 @@ public class CSVProcessor {
                 }
 
                 String[] values = line.split(",");
-                if (values.length == 4) {
-                    Flashcard flashcard = new Flashcard(values[0], values[1], values[2], values[3]);
+                if (values.length >= 8) {
+                    LocalDateTime reviewDate = LocalDateTime.parse(values[3], formatter);
+                    LocalDateTime dateAdded = LocalDateTime.parse(values[4], formatter);
+                    int repetitions = Integer.parseInt(values[5]);
+                    double easeFactor = Double.parseDouble(values[6]);
+                    int interval = Integer.parseInt(values[7]);
+
+                    Flashcard flashcard = new Flashcard(
+                            values[0], values[1], values[2],
+                            reviewDate, dateAdded,
+                            repetitions, easeFactor, interval
+                    );
                     flashcards.add(flashcard);
                 }
             }
@@ -50,17 +63,25 @@ public class CSVProcessor {
                 }
 
                 String[] values = line.split(",");
-                if (values.length == 4 && values[0].equals(updated.getTerm()) && !updated.getTerm().equals(old.getTerm())) {
+                if (values.length >= 8 && values[0].equals(updated.getTerm()) && !updated.getTerm().equals(old.getTerm())) {
                     hasDuplicate = true;
                     lines.add(line);
                     JOptionPane.showMessageDialog(null, "Duplicate Term!", "Error", JOptionPane.ERROR_MESSAGE);
                 } else {
-                    if (!hasDuplicate && values.length == 4 &&
+                    if (!hasDuplicate && values.length >= 8 &&
                             values[0].equals(old.getTerm()) &&
                             values[1].equals(old.getDefinition()) &&
-                            values[2].equals(old.getType()) &&
-                            values[3].equals(old.getReviewDate())) {
-                        lines.add(String.join(",", updated.getTerm(), updated.getDefinition(), updated.getType(), updated.getReviewDate()));
+                            values[2].equals(old.getType())) {
+                        lines.add(String.join(",",
+                                updated.getTerm(),
+                                updated.getDefinition(),
+                                updated.getType(),
+                                updated.getReviewDate().format(formatter),
+                                updated.getDateAdded().format(formatter),
+                                String.valueOf(updated.getRepetitions()),
+                                String.valueOf(updated.getEaseFactor()),
+                                String.valueOf(updated.getInterval())
+                        ));
                     } else {
                         lines.add(line);
                     }
@@ -96,7 +117,7 @@ public class CSVProcessor {
                 }
 
                 String[] values = line.split(",");
-                if (values.length == 4 && values[0].equals(flashcard.getTerm())) {
+                if (values.length >= 8 && values[0].equals(flashcard.getTerm())) {
                     hasDuplicate = true;
                     lines.add(line);
                     JOptionPane.showMessageDialog(null, "Duplicate Term!", "Error", JOptionPane.ERROR_MESSAGE);
@@ -105,7 +126,16 @@ public class CSVProcessor {
                 }
             }
             if (!hasDuplicate) {
-                lines.add(String.join(",", flashcard.getTerm(), flashcard.getDefinition(), flashcard.getType(), flashcard.getReviewDate()));
+                lines.add(String.join(",",
+                        flashcard.getTerm(),
+                        flashcard.getDefinition(),
+                        flashcard.getType(),
+                        flashcard.getReviewDate().format(formatter),
+                        flashcard.getDateAdded().format(formatter),
+                        String.valueOf(flashcard.getRepetitions()),
+                        String.valueOf(flashcard.getEaseFactor()),
+                        String.valueOf(flashcard.getInterval())
+                ));
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -129,7 +159,6 @@ public class CSVProcessor {
             try (BufferedReader br = Files.newBufferedReader(CSV_PATH)) {
                 String line;
                 boolean isHeader = true;
-                boolean hasDuplicate = false;
 
                 while ((line = br.readLine()) != null) {
                     if (isHeader) {
@@ -139,11 +168,11 @@ public class CSVProcessor {
                     }
 
                     String[] values = line.split(",");
-                    if (values.length == 4 &&
+                    if (values.length >= 8 &&
                             values[0].equals(flashcard.getTerm()) &&
                             values[1].equals(flashcard.getDefinition()) &&
-                            values[2].equals(flashcard.getType()) &&
-                            values[3].equals(flashcard.getReviewDate())) {
+                            values[2].equals(flashcard.getType())) {
+                        // Skip this line (don't add to lines)
                     } else {
                         lines.add(line);
                     }

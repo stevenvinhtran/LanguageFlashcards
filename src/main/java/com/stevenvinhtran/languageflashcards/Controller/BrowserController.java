@@ -3,36 +3,32 @@ package com.stevenvinhtran.languageflashcards.Controller;
 import com.stevenvinhtran.languageflashcards.Model.CSVProcessor;
 import com.stevenvinhtran.languageflashcards.Model.Flashcard;
 import com.stevenvinhtran.languageflashcards.Model.SceneSwitcher;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
-
+import java.time.format.DateTimeFormatter;
 import javax.swing.*;
 import java.io.IOException;
 
 public class BrowserController {
+    private final DateTimeFormatter displayFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
     @FXML
     private Button addButton;
-
     @FXML
     private Button backButton;
-
     @FXML
     private AnchorPane browserAnchorPane;
-
     @FXML
     private Button deleteButton;
-
     @FXML
     private Button editButton;
-
     @FXML
     private Label sortByLabel;
-
     @FXML private SplitMenuButton sortByMenu;
     @FXML private MenuItem todayMenuItem;
     @FXML private MenuItem threeDaysMenuItem;
@@ -48,6 +44,7 @@ public class BrowserController {
     @FXML private TableColumn<Flashcard, String> definitionColumn;
     @FXML private TableColumn<Flashcard, String> typeColumn;
     @FXML private TableColumn<Flashcard, String> reviewDateColumn;
+    @FXML private TableColumn<Flashcard, String> dateAddedColumn;
 
     @FXML
     void deleteTerm(ActionEvent event) {
@@ -66,7 +63,6 @@ public class BrowserController {
         Flashcard selectedFlashcard = flashcardsTable.getSelectionModel().getSelectedItem();
         if (selectedFlashcard != null) {
             new SceneSwitcher(selectedFlashcard);
-
         } else {
             JOptionPane.showMessageDialog(null, "Please select a flashcard to edit", "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -105,7 +101,10 @@ public class BrowserController {
         termColumn.setCellValueFactory(cellData -> cellData.getValue().termProperty());
         definitionColumn.setCellValueFactory(cellData -> cellData.getValue().definitionProperty());
         typeColumn.setCellValueFactory(cellData -> cellData.getValue().typeProperty());
-        reviewDateColumn.setCellValueFactory(cellData -> cellData.getValue().reviewDateProperty());
+
+        // Format dates for display
+        reviewDateColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getReviewDate().format(displayFormatter)));
+        dateAddedColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDateAdded().format(displayFormatter)));
 
         // loadFlashcardTable is called in SceneSwitcher
     }
