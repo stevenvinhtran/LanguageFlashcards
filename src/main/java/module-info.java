@@ -3,6 +3,7 @@ module com.example.languageflashcards {
     requires javafx.fxml;
 
     requires com.dlsc.formsfx;
+    requires java.desktop;
 
     opens com.stevenvinhtran.languageflashcards to javafx.fxml;
     exports com.stevenvinhtran.languageflashcards;

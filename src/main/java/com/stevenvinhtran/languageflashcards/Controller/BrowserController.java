@@ -12,9 +12,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 
+import javax.swing.*;
 import java.io.IOException;
 
 public class BrowserController {
@@ -57,8 +57,14 @@ public class BrowserController {
     }
 
     @FXML
-    void goToEditTermScene(ActionEvent event) {
+    void goToEditTermScene(ActionEvent event) throws IOException {
+        Flashcard selectedFlashcard = flashcardsTable.getSelectionModel().getSelectedItem();
+        if (selectedFlashcard != null) {
+            new SceneSwitcher(selectedFlashcard);
 
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select a flashcard to edit", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     @FXML
@@ -72,14 +78,17 @@ public class BrowserController {
     }
 
     @FXML
+    public void loadFlashcardTable() {
+        ObservableList<Flashcard> flashcards = FXCollections.observableList(CSVLoader.loadFlashcards());
+        flashcardsTable.setItems(flashcards);
+    }
+
     public void initialize() {
         termColumn.setCellValueFactory(cellData -> cellData.getValue().termProperty());
         definitionColumn.setCellValueFactory(cellData -> cellData.getValue().definitionProperty());
         typeColumn.setCellValueFactory(cellData -> cellData.getValue().typeProperty());
         reviewDateColumn.setCellValueFactory(cellData -> cellData.getValue().reviewDateProperty());
 
-        ObservableList<Flashcard> flashcards = FXCollections.observableList(CSVLoader.loadFlashcards());
-        flashcardsTable.setItems(flashcards);
+        // loadFlashcardTable is called in SceneSwitcher
     }
-
 }
