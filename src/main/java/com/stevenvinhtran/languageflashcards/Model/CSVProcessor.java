@@ -22,7 +22,7 @@ public class CSVProcessor {
         ArrayList<String> settings = new ArrayList<>();
 
         try {
-            List<String> lines = readCSV(FLASHCARD_CSV_PATH, settingsHeader);
+            List<String> lines = readCSV(SETTINGS_CSV_PATH, settingsHeader);
 
             boolean skipHeader = true;
             for (String line : lines) {

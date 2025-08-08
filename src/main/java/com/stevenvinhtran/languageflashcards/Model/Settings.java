@@ -14,16 +14,38 @@ public class Settings {
     private static int[] relearningSteps = {30, 1440}; // 30m, 1d
 
     // Getters
-    public int getNewVocabCardsPerDay() { return newVocabCardsPerDay; }
-    public int getNewGrammarCardsPerDay() { return newGrammarCardsPerDay; }
-    public int[] getLearningSteps() { return learningSteps; }
-    public int[] getRelearningSteps() { return relearningSteps; }
+    public int getNewVocabCardsPerDay() {
+        return newVocabCardsPerDay;
+    }
+
+    public int getNewGrammarCardsPerDay() {
+        return newGrammarCardsPerDay;
+    }
+
+    public int[] getLearningSteps() {
+        return learningSteps;
+    }
+
+    public int[] getRelearningSteps() {
+        return relearningSteps;
+    }
 
     // Setters
-    public void setNewVocabCardsPerDay(int newVocabCardsPerDay) { Settings.newVocabCardsPerDay = newVocabCardsPerDay; }
-    public void setNewGrammarCardsPerDay(int newGrammarCardsPerDay) { Settings.newGrammarCardsPerDay = newGrammarCardsPerDay; }
-    public void setLearningSteps(int[] learningSteps) { Settings.learningSteps = learningSteps; }
-    public void setRelearningSteps(int[] relearningSteps) { Settings.relearningSteps = relearningSteps; }
+    public void setNewVocabCardsPerDay(int newVocabCardsPerDay) {
+        Settings.newVocabCardsPerDay = newVocabCardsPerDay;
+    }
+
+    public void setNewGrammarCardsPerDay(int newGrammarCardsPerDay) {
+        Settings.newGrammarCardsPerDay = newGrammarCardsPerDay;
+    }
+
+    public void setLearningSteps(int[] learningSteps) {
+        Settings.learningSteps = learningSteps;
+    }
+
+    public void setRelearningSteps(int[] relearningSteps) {
+        Settings.relearningSteps = relearningSteps;
+    }
 
     public static void scheduleNewCards(List<Flashcard> flashcards) {
         LocalDateTime now = LocalDateTime.now();
@@ -85,7 +107,7 @@ public class Settings {
             }
             return steps;
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Learning Steps or Relearning Steps could not be parsed. Please only use numbers and commas.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Learning Steps or Relearning Steps could not be parsed. Defaults will be applied.", "Error", JOptionPane.ERROR_MESSAGE);
             int[] steps;
             if (identifier.equals("Learning Steps")) {
                 steps = new int[]{30, 1440, 4320};
@@ -95,3 +117,4 @@ public class Settings {
             return steps;
         }
     }
+}
