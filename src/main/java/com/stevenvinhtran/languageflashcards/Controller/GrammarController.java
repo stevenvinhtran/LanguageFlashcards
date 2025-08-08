@@ -9,9 +9,9 @@ import javafx.scene.text.Text;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class VocabularyController {
+public class GrammarController {
     ArrayList<Flashcard> flashcards = CSVProcessor.loadFlashcards();
-    ArrayList<DummyFlashcard> dummyFlashcards = DeckHandler.vocabDummyDeck;
+    ArrayList<DummyFlashcard> dummyFlashcards = DeckHandler.grammarDummyDeck;
     private int newNum = 0;
     private int learningNum = 0;
     private int reviewingNum = 0;
@@ -37,7 +37,7 @@ public class VocabularyController {
     @FXML
     private Text definitionText;
     @FXML
-    private AnchorPane vocabularyAnchorPane;
+    private AnchorPane grammarAnchorPane;
 
     @FXML private Text newText;
     @FXML private Text learningText;
@@ -48,7 +48,7 @@ public class VocabularyController {
     void onEasyClick() {
         switchVisible();
         if (dummyFlashcards.get(0).getIsNewCard()) {
-            CSVProcessor.incrementDailyNewCardCount("Vocabulary");
+            CSVProcessor.incrementDailyNewCardCount("Grammar");
         }
         SpacedRepetition.easyFlashcard(flashcards, dummyFlashcards);
         checkIfCompleted();
@@ -59,7 +59,7 @@ public class VocabularyController {
     void onFailClick() {
         switchVisible();
         if (dummyFlashcards.get(0).getIsNewCard()) {
-            CSVProcessor.incrementDailyNewCardCount("Vocabulary");
+            CSVProcessor.incrementDailyNewCardCount("Grammar");
         }
         SpacedRepetition.failFlashcard(flashcards, dummyFlashcards);
         checkIfCompleted();
@@ -70,7 +70,7 @@ public class VocabularyController {
     void onPassClick() {
         switchVisible();
         if (dummyFlashcards.get(0).getIsNewCard()) {
-            CSVProcessor.incrementDailyNewCardCount("Vocabulary");
+            CSVProcessor.incrementDailyNewCardCount("Grammar");
         }
         SpacedRepetition.passFlashcard(flashcards, dummyFlashcards);
         checkIfCompleted();
@@ -139,7 +139,7 @@ public class VocabularyController {
         if (!dummyFlashcards.isEmpty()) {
             setCardText();
         } else {
-            termText.setText("Completed Vocabulary Deck!");
+            termText.setText("Completed Grammar Deck!");
 
             revealButton.setVisible(false);
             definitionText.setVisible(false);

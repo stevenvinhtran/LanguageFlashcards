@@ -50,7 +50,6 @@ public class SpacedRepetition {
         DeckHandler.sortDummyDeck(dummyFlashcards);
 
         CSVProcessor.updateFlashcard(oldFlashcard, flashcard);
-        System.out.println("Passed Card Easily");
     }
 
     public static void passFlashcard(ArrayList<Flashcard> flashcards, ArrayList<DummyFlashcard> dummyFlashcards) {
@@ -95,7 +94,6 @@ public class SpacedRepetition {
         DeckHandler.sortDummyDeck(dummyFlashcards);
 
         CSVProcessor.updateFlashcard(oldFlashcard, flashcard);
-        System.out.println("Passed Card");
     }
 
     public static void failFlashcard(ArrayList<Flashcard> flashcards, ArrayList<DummyFlashcard> dummyFlashcards) {
@@ -132,7 +130,6 @@ public class SpacedRepetition {
         DeckHandler.sortDummyDeck(dummyFlashcards);
 
         CSVProcessor.updateFlashcard(oldFlashcard, flashcard);
-        System.out.println("Failed Card");
     }
 
     private static void learningPass(Flashcard flashcard, ArrayList<DummyFlashcard> dummyFlashcards) {
@@ -157,7 +154,6 @@ public class SpacedRepetition {
                 dummyFlashcard.setIsNewCard(false);
             }
         }
-        System.out.println("Handled card in learningPass()");
     }
 
     private static void relearningPass(Flashcard flashcard, ArrayList<DummyFlashcard> dummyFlashcards) {
@@ -182,6 +178,5 @@ public class SpacedRepetition {
                 }
             }
         }
-        System.out.println("Handled card in relearningPass()");
     }
 }

@@ -26,24 +26,6 @@ public class SceneSwitcher {
             BrowserController browserController = fxmlLoader.getController();
             browserController.loadFlashcardTable();
         }
-
-        System.out.println("Scene switched to " + fxml);
-    }
-
-    public SceneSwitcher(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(LanguageFlashcardsApplication.class.getResource(fxml));
-        Scene scene = new Scene(fxmlLoader.load(), 960, 720);
-        stage.setMinWidth(976);
-        stage.setMinHeight(759);
-        stage.setScene(scene);
-        stage.show();
-
-        if (fxml == "browser-view.fxml") {
-            BrowserController browserController = fxmlLoader.getController();
-            browserController.loadFlashcardTable();
-        }
-
-        System.out.println("Scene switched to " + fxml);
     }
 
     // Switch scene to Edit Flashcard
@@ -57,7 +39,5 @@ public class SceneSwitcher {
         stage.show();
         EditFlashcardController editFlashcardController = fxmlLoader.getController();
         editFlashcardController.setFlashcard(flashcard);
-
-        System.out.println("Scene switched to edit-flashcard-view.fxml");
     }
 }

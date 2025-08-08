@@ -33,8 +33,6 @@ public class DeckHandler {
         Collections.shuffle(dummyDeck);
         sortDummyDeck(dummyDeck);
         vocabDummyDeck = dummyDeck;
-
-        System.out.println("Vocab Deck built");
     }
 
     public static void buildGrammarDeck(List<Flashcard> flashcards) {
@@ -59,8 +57,6 @@ public class DeckHandler {
         Collections.shuffle(dummyDeck);
         sortDummyDeck(dummyDeck);
         grammarDummyDeck = dummyDeck;
-
-        System.out.println("Grammar Deck built");
     }
 
     public static void sortDummyDeck(ArrayList<DummyFlashcard> dummyDeck) {
@@ -93,7 +89,5 @@ public class DeckHandler {
         dummyDeck.addAll(earlierOrNow);
         dummyDeck.addAll(midnightToday);
         dummyDeck.addAll(later);
-
-        System.out.println("Dummy deck sorted");
     }
 }

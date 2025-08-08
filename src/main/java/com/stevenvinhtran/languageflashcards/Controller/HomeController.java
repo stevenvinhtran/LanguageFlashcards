@@ -31,8 +31,8 @@ public class HomeController {
     }
 
     @FXML
-    void goToGrammarScene() {
-
+    void goToGrammarScene() throws IOException {
+        new SceneSwitcher("grammar-view.fxml", "Grammar");
     }
 
     @FXML

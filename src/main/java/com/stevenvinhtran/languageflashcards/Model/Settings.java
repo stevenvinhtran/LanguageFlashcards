@@ -28,8 +28,8 @@ public class Settings {
 
     public static void scheduleCards(List<Flashcard> flashcards) {
         LocalDateTime now = LocalDateTime.now();
-        boolean vocabDailyLimitReached = hasReachedDailyNewCardLimit("Vocabulary");
-        boolean grammarDailyLimitReached = hasReachedDailyNewCardLimit("Grammar");
+        int newVocabDailyCount = getNumOfNewCardsCompletedToday("Vocabulary");
+        int newGrammarDailyCount = getNumOfNewCardsCompletedToday("Grammar");
         // Handle new cards
 
         // New vocab
@@ -45,20 +45,39 @@ public class Settings {
                 .collect(Collectors.toList());
 
         int vocabDays = 0;
-        if (vocabDailyLimitReached) { vocabDays++; }
+        boolean vocablimitAccountedFor = false;
+        if (newVocabDailyCount >= newVocabCardsPerDay) { vocabDays++; }
         for (int i = 0; i < newVocabCards.size(); i++) {
-            if (i % newVocabCardsPerDay == 0 && i != 0) {
-                vocabDays++;
+            if (vocabDays > 0) { vocablimitAccountedFor = true; }
+
+            if (!vocablimitAccountedFor) {
+                if (newGrammarCardsPerDay - newVocabDailyCount == 0 || i % (newVocabCardsPerDay - newVocabDailyCount) == 0 && i != 0) {
+                    vocabDays++;
+                }
+            } else {
+                if (i % newVocabCardsPerDay == 0 && i != 0) {
+                    vocabDays++;
+                }
             }
+
             Flashcard card = newVocabCards.get(i);
             card.setReviewDate(now.plusDays(vocabDays).withHour(0).withMinute(0).withSecond(0));
         }
 
         int grammarDays = 0;
-        if (grammarDailyLimitReached) { grammarDays++; }
+        boolean grammarlimitAccountedFor = false;
+        if (newGrammarDailyCount >= newGrammarCardsPerDay) { grammarDays++; }
         for (int i = 0; i < newGrammarCards.size(); i++) {
-            if (i % newGrammarCardsPerDay == 0 && i != 0) {
-                grammarDays++;
+            if (grammarDays > 0) { grammarlimitAccountedFor = true; }
+
+            if (!grammarlimitAccountedFor) {
+                if (newGrammarCardsPerDay - newGrammarDailyCount == 0 || i % (newGrammarCardsPerDay - newGrammarDailyCount) == 0 && i != 0) {
+                    grammarDays++;
+                }
+            } else {
+                if (i % newGrammarCardsPerDay == 0 && i != 0) {
+                    grammarDays++;
+                }
             }
             Flashcard card = newGrammarCards.get(i);
             card.setReviewDate(now.plusDays(grammarDays).withHour(0).withMinute(0).withSecond(0));
@@ -85,8 +104,6 @@ public class Settings {
         ArrayList<Flashcard> postUpdateCards = CSVProcessor.loadFlashcards();
         DeckHandler.buildVocabDeck(postUpdateCards);
         DeckHandler.buildGrammarDeck(postUpdateCards);
-
-        System.out.println("Cards scheduled");
     }
 
 
@@ -100,8 +117,6 @@ public class Settings {
 
         CSVProcessor.saveSettings(newVocabCardsPerDay, newGrammarCardsPerDay, learningSteps, relearningSteps);
         scheduleCards(CSVProcessor.loadFlashcards());
-
-        System.out.println("Settings updated");
     }
 
     private static int[] parseSteps(String stepsStr, int[] currentSteps, String identifier) {
@@ -111,7 +126,6 @@ public class Settings {
             for (int i = 0; i < parts.length; i++) {
                 steps[i] = Integer.parseInt(parts[i].trim());
             }
-            System.out.println("parseSteps run (success)");
             return steps;
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Learning Steps or Relearning Steps could not be parsed. Defaults will be applied.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -121,21 +135,18 @@ public class Settings {
             } else {
                 steps = new int[]{30, 1440};
             }
-            System.out.println("parseSteps run (error)");
             return steps;
         }
     }
 
-    private static boolean hasReachedDailyNewCardLimit(String cardType) {
-        int[] counts = CSVProcessor.getTodayNewCardCounts();
-        int maxVocab = getNewVocabCardsPerDay();
-        int maxGrammar = getNewGrammarCardsPerDay();
+    private static int getNumOfNewCardsCompletedToday(String cardType) {
+        int[] counts = CSVProcessor.getTodaysNewCardCounts();
 
         if (cardType.equals("Vocabulary")) {
-            return counts[0] >= maxVocab;
+            return counts[0];
         } else if (cardType.equals("Grammar")) {
-            return counts[1] >= maxGrammar;
+            return counts[1];
         }
-        return false;
+        return 0;
     }
 }
