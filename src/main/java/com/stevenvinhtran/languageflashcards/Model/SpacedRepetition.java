@@ -36,7 +36,6 @@ public class SpacedRepetition {
 
         if (flashcard.getIsNewCard()) {
             learningPass(flashcard, dummyFlashcards);
-            flashcard.setIsNewCard(false);
         } else if (!flashcard.getIsRelearning() && repetitions <= learningSteps.length) {
             learningPass(flashcard, dummyFlashcards);
         } else if (flashcard.getIsRelearning() && repetitions <= relearningSteps.length) {
@@ -44,6 +43,7 @@ public class SpacedRepetition {
         } else {
             flashcard.setInterval((int)Math.round(flashcard.getInterval() * flashcard.getEaseFactor()));
             flashcard.setReviewDate(LocalDateTime.now().plusDays(flashcard.getInterval()));
+            flashcard.setIsRelearning(false);
             dummyFlashcards.remove(0);
         }
 
@@ -81,7 +81,6 @@ public class SpacedRepetition {
 
         if (flashcard.getIsNewCard()) {
             learningPass(flashcard, dummyFlashcards);
-            flashcard.setIsNewCard(false);
         } else if (!flashcard.getIsRelearning() && repetitions <= learningSteps.length) {
             learningPass(flashcard, dummyFlashcards);
         } else if (flashcard.getIsRelearning() && repetitions <= relearningSteps.length) {
@@ -89,6 +88,7 @@ public class SpacedRepetition {
         } else {
             flashcard.setInterval((int)Math.round(flashcard.getInterval() * flashcard.getEaseFactor()));
             flashcard.setReviewDate(LocalDateTime.now().plusDays(flashcard.getInterval()));
+            flashcard.setIsRelearning(false);
             dummyFlashcards.remove(0);
         }
 
@@ -121,7 +121,7 @@ public class SpacedRepetition {
         flashcard.setEaseFactor(easeFactor);
         flashcard.setRepetitions(0);
         flashcard.setInterval(0);
-        flashcard.setReviewDate(LocalDateTime.now().withHour(0).withMinute(0));
+        flashcard.setReviewDate(LocalDateTime.now().withHour(0).withMinute(0).withSecond(0));
         flashcard.setIsNewCard(false);
         flashcard.setIsRelearning(true);
 
@@ -147,7 +147,7 @@ public class SpacedRepetition {
                     dummyFlashcards.remove(0);
                 } else {
                     flashcard.setInterval(0);
-                    flashcard.setReviewDate(LocalDateTime.now().withHour(0).withMinute(0));
+                    flashcard.setReviewDate(LocalDateTime.now().withHour(0).withMinute(0).withSecond(0));
                     dummyFlashcard.setReviewDate(LocalDateTime.now().plusMinutes(learningSteps[i]));
                 }
             }
@@ -172,7 +172,7 @@ public class SpacedRepetition {
                     dummyFlashcards.remove(0);
                 } else {
                     flashcard.setInterval(0);
-                    flashcard.setReviewDate(LocalDateTime.now().withHour(0).withMinute(0));
+                    flashcard.setReviewDate(LocalDateTime.now().withHour(0).withMinute(0).withSecond(0));
                     dummyFlashcard.setReviewDate(LocalDateTime.now().plusMinutes(relearningSteps[i]));
                 }
 

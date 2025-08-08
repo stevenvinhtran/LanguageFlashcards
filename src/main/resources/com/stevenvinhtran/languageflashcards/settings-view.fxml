@@ -20,7 +20,7 @@
          </font>
       </Label>
       <TextField fx:id="learningStepsTextField" layoutX="72.0" layoutY="167.0" prefHeight="25.0" prefWidth="817.0" promptText="30,1440,4320 (30 minutes, 1 day, 3 days)" AnchorPane.leftAnchor="72.0" AnchorPane.rightAnchor="71.0" />
-      <Label fx:id="learningStepsLabel" layoutX="72.0" layoutY="150.0" text="Learning Steps (in minutes)" AnchorPane.leftAnchor="72.0" AnchorPane.topAnchor="150.0" />
+      <Label fx:id="learningStepsLabel" layoutX="72.0" layoutY="150.0" text="Learning Steps (in minutes) (strongly advised that last step is at least a day)" AnchorPane.leftAnchor="72.0" AnchorPane.topAnchor="150.0" />
       <Spinner fx:id="vocabularySpinner" editable="true" layoutX="245.0" layoutY="294.0" AnchorPane.leftAnchor="245.0" AnchorPane.topAnchor="294.0" />
       <Label fx:id="vocabularyLabel" layoutX="72.0" layoutY="298.0" text="New Vocabulary Cards per Day" AnchorPane.leftAnchor="72.0" AnchorPane.topAnchor="298.0" />
       <Spinner fx:id="grammarSpinner" editable="true" layoutX="245.0" layoutY="348.0" AnchorPane.leftAnchor="245.0" AnchorPane.topAnchor="348.0" />
@@ -31,6 +31,6 @@
          </font>
       </Button>
       <TextField fx:id="relearningStepsTextField" layoutX="72.0" layoutY="228.0" prefHeight="25.0" prefWidth="817.0" promptText="30,1440 (30 minutes, 1 day)" />
-      <Label fx:id="relearningStepsLabel" layoutX="72.0" layoutY="211.0" text="Relearning Steps (in minutes)" />
+      <Label fx:id="relearningStepsLabel" layoutX="72.0" layoutY="211.0" text="Relearning Steps (in minutes) (strongly advised that last step is at least a day)" />
    </children>
 </AnchorPane>

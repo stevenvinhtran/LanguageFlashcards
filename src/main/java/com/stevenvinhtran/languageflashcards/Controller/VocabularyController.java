@@ -47,6 +47,9 @@ public class VocabularyController {
     @FXML
     void onEasyClick() {
         switchVisible();
+        if (dummyFlashcards.get(0).getIsNewCard()) {
+            CSVProcessor.incrementDailyNewCardCount("Vocabulary");
+        }
         SpacedRepetition.easyFlashcard(flashcards, dummyFlashcards);
         checkIfCompleted();
         refreshCounters();
@@ -55,6 +58,9 @@ public class VocabularyController {
     @FXML
     void onFailClick() {
         switchVisible();
+        if (dummyFlashcards.get(0).getIsNewCard()) {
+            CSVProcessor.incrementDailyNewCardCount("Vocabulary");
+        }
         SpacedRepetition.failFlashcard(flashcards, dummyFlashcards);
         checkIfCompleted();
         refreshCounters();
@@ -63,6 +69,9 @@ public class VocabularyController {
     @FXML
     void onPassClick() {
         switchVisible();
+        if (dummyFlashcards.get(0).getIsNewCard()) {
+            CSVProcessor.incrementDailyNewCardCount("Vocabulary");
+        }
         SpacedRepetition.passFlashcard(flashcards, dummyFlashcards);
         checkIfCompleted();
         refreshCounters();

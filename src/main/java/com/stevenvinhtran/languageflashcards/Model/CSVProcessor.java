@@ -3,6 +3,7 @@ package com.stevenvinhtran.languageflashcards.Model;
 import javax.swing.*;
 import java.io.*;
 import java.nio.file.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -12,9 +13,11 @@ public class CSVProcessor {
 
     private static final Path FLASHCARD_CSV_PATH = resolvePath("data/flashcards.csv");
     private static final Path SETTINGS_CSV_PATH = resolvePath("data/settings.csv");
+    private static final Path DAILY_COUNTS_CSV_PATH = resolvePath("data/daily_counts.csv");
     private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
     private static final List<String> flashcardsHeader = Arrays.asList("term,definition,type,reviewDate,dateAdded,repetitions,easeFactor,interval,isNewCard,isRelearning");
     private static final List<String> settingsHeader = Arrays.asList("newVocabCardsPerDay,newGrammarCardsPerDay,learningSteps,relearningSteps");
+    private static final List<String> dailyCountsHeader = Arrays.asList("date,numOfNewVocabCards,numOfNewGrammarCards");
 
     // Public Methods
 
@@ -91,18 +94,18 @@ public class CSVProcessor {
                     continue;
                 }
 
-                String[] values = line.split(",");
-                if (values.length >= 9) {
-                    LocalDateTime reviewDate = LocalDateTime.parse(values[3], formatter);
-                    LocalDateTime dateAdded = LocalDateTime.parse(values[4], formatter);
-                    int repetitions = Integer.parseInt(values[5]);
-                    double easeFactor = Double.parseDouble(values[6]);
-                    int interval = Integer.parseInt(values[7]);
-                    boolean isNewCard = Boolean.parseBoolean(values[8]);
-                    boolean isRelearning = Boolean.parseBoolean(values[9]);
+                List<String> values = parseCSVLine(line);
+                if (values.size() >= 9) {
+                    LocalDateTime reviewDate = LocalDateTime.parse(values.get(3), formatter);
+                    LocalDateTime dateAdded = LocalDateTime.parse(values.get(4), formatter);
+                    int repetitions = Integer.parseInt(values.get(5));
+                    double easeFactor = Double.parseDouble(values.get(6));
+                    int interval = Integer.parseInt(values.get(7));
+                    boolean isNewCard = Boolean.parseBoolean(values.get(8));
+                    boolean isRelearning = Boolean.parseBoolean(values.get(9));
 
                     flashcards.add(new Flashcard(
-                            values[0], values[1], values[2],
+                            values.get(0), values.get(1), values.get(2),
                             reviewDate, dateAdded,
                             repetitions, easeFactor, interval, isNewCard, isRelearning
                     ));
@@ -131,15 +134,15 @@ public class CSVProcessor {
                     continue;
                 }
 
-                String[] values = line.split(",");
-                if (values.length >= 9 && values[0].equals(updated.getTerm()) && !updated.getTerm().equals(old.getTerm())) {
+                List<String> values = parseCSVLine(line);
+                if (values.size() >= 9 && values.get(0).equals(updated.getTerm()) && !updated.getTerm().equals(old.getTerm())) {
                     hasDuplicate = true;
                     lines.add(line);
                     JOptionPane.showMessageDialog(null, "Duplicate Term!", "Error", JOptionPane.ERROR_MESSAGE);
-                } else if (!hasDuplicate && values.length >= 9 &&
-                        values[0].equals(old.getTerm()) &&
-                        values[1].equals(old.getDefinition()) &&
-                        values[2].equals(old.getType())) {
+                } else if (!hasDuplicate && values.size() >= 9 &&
+                        values.get(0).equals(old.getTerm()) &&
+                        values.get(1).equals(old.getDefinition()) &&
+                        values.get(2).equals(old.getType())) {
                     lines.add(createFlashcardCSVLine(updated));
                 } else {
                     lines.add(line);
@@ -164,8 +167,8 @@ public class CSVProcessor {
             }
 
             for (int i = 1; i < csvLines.size(); i++) {
-                String[] values = csvLines.get(i).split(",");
-                if (values.length >= 9) {
+                List<String> values = parseCSVLine(csvLines.get(i));
+                if (values.size() >= 9) {
                     Flashcard matchingOldCard = findMatchingFlashcard(values, (ArrayList<Flashcard>) oldDeck);
                     if (matchingOldCard != null) {
                         Flashcard updatedCard = findUpdatedCard(matchingOldCard, (ArrayList<Flashcard>) newDeck);
@@ -206,8 +209,8 @@ public class CSVProcessor {
                     continue;
                 }
 
-                String[] values = line.split(",");
-                if (values.length >= 9 && values[0].equals(flashcard.getTerm())) {
+                List<String> values = parseCSVLine(line);
+                if (values.size() >= 9 && values.get(1).equals(flashcard.getTerm())) {
                     hasDuplicate = true;
                     lines.add(line);
                     JOptionPane.showMessageDialog(null, "Duplicate Term!", "Error", JOptionPane.ERROR_MESSAGE);
@@ -244,11 +247,11 @@ public class CSVProcessor {
                         continue;
                     }
 
-                    String[] values = line.split(",");
-                    if (!(values.length >= 9 &&
-                            values[0].equals(flashcard.getTerm()) &&
-                            values[1].equals(flashcard.getDefinition()) &&
-                            values[2].equals(flashcard.getType()))) {
+                    List<String> values = parseCSVLine(line);
+                    if (!(values.size() >= 9 &&
+                            values.get(0).equals(flashcard.getTerm()) &&
+                            values.get(1).equals(flashcard.getDefinition()) &&
+                            values.get(2).equals(flashcard.getType()))) {
                         lines.add(line);
                     }
                 }
@@ -260,6 +263,83 @@ public class CSVProcessor {
         }
 
         System.out.println("deleteFlashcard() run");
+    }
+
+    public static void incrementDailyNewCardCount(String cardType) {
+        try {
+            LocalDate today = LocalDate.now();
+            List<String> lines = readCSV(DAILY_COUNTS_CSV_PATH, dailyCountsHeader);
+
+            List<String> newLines = new ArrayList<>();
+            newLines.add(dailyCountsHeader.get(0)); // Add header
+
+            boolean foundToday = false;
+
+            // For loop in case daily_counts.csv has multiple entries
+            for (int i = 1; i < lines.size(); i++) {
+                List<String> values = parseCSVLine(lines.get(i));
+                if (values.size() >= 3 && values.get(0).equals(today.toString())) {
+                    foundToday = true;
+                    int vocabCount = Integer.parseInt(values.get(1));
+                    int grammarCount = Integer.parseInt(values.get(2));
+
+                    if (cardType.equals("Vocabulary")) {
+                        vocabCount++;
+                    } else if (cardType.equals("Grammar")) {
+                        grammarCount++;
+                    }
+
+                    newLines.add(String.format("%s,%d,%d", today, vocabCount, grammarCount));
+                }
+                // Skip all other dates
+            }
+
+            // If today's entry wasn't found, create a new one
+            if (!foundToday) {
+                int vocabCount = cardType.equals("Vocabulary") ? 1 : 0;
+                int grammarCount = cardType.equals("Grammar") ? 1 : 0;
+                newLines.add(String.format("%s,%d,%d", today, vocabCount, grammarCount));
+            }
+
+            writeCSV(DAILY_COUNTS_CSV_PATH, newLines);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static int[] getTodayNewCardCounts() {
+        try {
+            LocalDate today = LocalDate.now();
+            List<String> lines = readCSV(DAILY_COUNTS_CSV_PATH, dailyCountsHeader);
+
+            // Clean up old entries while we're here
+            List<String> newLines = new ArrayList<>();
+            newLines.add(dailyCountsHeader.get(0));
+
+            int[] counts = new int[]{0, 0};
+            boolean foundToday = false;
+
+            for (int i = 1; i < lines.size(); i++) {
+                List<String> values = parseCSVLine(lines.get(i));
+                if (values.size() >= 3 && values.get(0).equals(today.toString())) {
+                    foundToday = true;
+                    counts[0] = Integer.parseInt(values.get(1));
+                    counts[1] = Integer.parseInt(values.get(2));
+                    newLines.add(lines.get(i));
+                }
+                // Other dates are skipped
+            }
+
+            // If we modified the file, write it back
+            if (lines.size() != newLines.size()) {
+                writeCSV(DAILY_COUNTS_CSV_PATH, newLines);
+            }
+
+            return counts;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return new int[]{0, 0};
+        }
     }
 
 
@@ -295,12 +375,18 @@ public class CSVProcessor {
         boolean inQuotes = false;
         StringBuilder currentValue = new StringBuilder();
 
-        for (char c : line.toCharArray()) {
+        for (int i = 0; i < line.length(); i++) {
+            char c = line.charAt(i);
             if (c == '\"') {
-                inQuotes = !inQuotes;
+                if (inQuotes && i + 1 < line.length() && line.charAt(i + 1) == '\"') {
+                    currentValue.append('\"'); // Escaped quote
+                    i++;
+                } else {
+                    inQuotes = !inQuotes; // Toggle state
+                }
             } else if (c == ',' && !inQuotes) {
                 values.add(currentValue.toString());
-                currentValue = new StringBuilder();
+                currentValue.setLength(0);
             } else {
                 currentValue.append(c);
             }
@@ -310,6 +396,7 @@ public class CSVProcessor {
         return values;
     }
 
+
     private static void applyAndSaveDefaultSettings(List<String> settings, String message) {
         JOptionPane.showMessageDialog(null, message, "Error", JOptionPane.ERROR_MESSAGE);
         settings.addAll(Arrays.asList("20", "10", "30,1440,4320", "30,1440"));
@@ -317,12 +404,12 @@ public class CSVProcessor {
         System.out.println("applyAndSaveDefaultSettings() run");
     }
 
-    private static Flashcard findMatchingFlashcard(String[] values, ArrayList<Flashcard> deck) {
+    private static Flashcard findMatchingFlashcard(List<String> values, ArrayList<Flashcard> deck) {
         System.out.println("findMatchingFlashcard() run");
         return deck.stream()
-                .filter(card -> card.getTerm().equals(values[0]) &&
-                        card.getDefinition().equals(values[1]) &&
-                        card.getType().equals(values[2]))
+                .filter(card -> card.getTerm().equals(values.get(0)) &&
+                        card.getDefinition().equals(values.get(1)) &&
+                        card.getType().equals(values.get(2)))
                 .findFirst()
                 .orElse(null);
     }
@@ -337,19 +424,30 @@ public class CSVProcessor {
                 .orElse(null);
     }
 
+    private static String escapeCSVField(String field) {
+        if (field.contains("\"")) {
+            field = field.replace("\"", "\"\""); // escape quotes
+        }
+        if (field.contains(",") || field.contains("\"") || field.contains("\n")) {
+            field = "\"" + field + "\""; // wrap in quotes if needed
+        }
+        return field;
+    }
+
     private static String createFlashcardCSVLine(Flashcard card) {
         System.out.println("createFlashcardCSVLine() run");
         return String.join(",",
-                card.getTerm(),
-                card.getDefinition(),
-                card.getType(),
-                card.getReviewDate().format(formatter),
-                card.getDateAdded().format(formatter),
-                String.valueOf(card.getRepetitions()),
-                String.valueOf(card.getEaseFactor()),
-                String.valueOf(card.getInterval()),
-                String.valueOf(card.getIsNewCard()),
-                String.valueOf(card.getIsRelearning())
+                escapeCSVField(card.getTerm()),
+                escapeCSVField(card.getDefinition()),
+                escapeCSVField(card.getType()),
+                escapeCSVField(card.getReviewDate().format(formatter)),
+                escapeCSVField(card.getDateAdded().format(formatter)),
+                escapeCSVField(String.valueOf(card.getRepetitions())),
+                escapeCSVField(String.valueOf(card.getEaseFactor())),
+                escapeCSVField(String.valueOf(card.getInterval())),
+                escapeCSVField(String.valueOf(card.getIsNewCard())),
+                escapeCSVField(String.valueOf(card.getIsRelearning()))
         );
     }
+
 }
