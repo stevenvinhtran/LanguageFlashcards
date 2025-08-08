@@ -6,10 +6,10 @@ import com.stevenvinhtran.languageflashcards.Model.SceneSwitcher;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+
 import java.time.format.DateTimeFormatter;
 import javax.swing.*;
 import java.io.IOException;
@@ -25,6 +25,8 @@ public class BrowserController {
     private AnchorPane browserAnchorPane;
     @FXML
     private Button deleteButton;
+    @FXML
+    private Button settingsButton;
     @FXML
     private Button editButton;
     @FXML
@@ -47,19 +49,19 @@ public class BrowserController {
     @FXML private TableColumn<Flashcard, String> dateAddedColumn;
 
     @FXML
-    void deleteTerm(ActionEvent event) {
+    void deleteTerm() {
         Flashcard selectedFlashcard = flashcardsTable.getSelectionModel().getSelectedItem();
         CSVProcessor.deleteFlashcard(selectedFlashcard);
         loadFlashcardTable();
     }
 
     @FXML
-    void goToAddTermScene(ActionEvent event) throws IOException {
-        new SceneSwitcher("add-flashcard-view.fxml", "Browser");
+    void goToAddTermScene() throws IOException {
+        new SceneSwitcher("add-flashcard-view.fxml", "Add Term");
     }
 
     @FXML
-    void goToEditTermScene(ActionEvent event) throws IOException {
+    void goToEditTermScene() throws IOException {
         Flashcard selectedFlashcard = flashcardsTable.getSelectionModel().getSelectedItem();
         if (selectedFlashcard != null) {
             new SceneSwitcher(selectedFlashcard);
@@ -69,7 +71,12 @@ public class BrowserController {
     }
 
     @FXML
-    void returnToHomeScene(ActionEvent event) throws IOException {
+    void goToSettingsScene() throws IOException {
+        new SceneSwitcher("settings-view.fxml", "Settings");
+    }
+
+    @FXML
+    void returnToHomeScene() throws IOException {
         new SceneSwitcher("home-view.fxml", "Home");
     }
 
@@ -97,6 +104,7 @@ public class BrowserController {
         flashcardsTable.setItems(flashcards);
     }
 
+    @FXML
     public void initialize() {
         termColumn.setCellValueFactory(cellData -> cellData.getValue().termProperty());
         definitionColumn.setCellValueFactory(cellData -> cellData.getValue().definitionProperty());

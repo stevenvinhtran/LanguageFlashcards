@@ -31,6 +31,7 @@
                   <Font size="42.0" />
                </font>
             </Button>
+            <Button fx:id="settingsButton" mnemonicParsing="false" onAction="#goToSettingsScene" text="Settings" translateY="-25.0" />
          </children>
          <padding>
             <Insets top="20.0" />
