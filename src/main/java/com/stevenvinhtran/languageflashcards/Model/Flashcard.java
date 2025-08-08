@@ -15,10 +15,11 @@ public class Flashcard {
     private final SimpleObjectProperty<Double> easeFactor;
     private final SimpleObjectProperty<Integer> interval;
     private final SimpleBooleanProperty isNewCard;
+    private final SimpleBooleanProperty isRelearning;
 
     public Flashcard(String term, String definition, String type,
                      LocalDateTime reviewDate, LocalDateTime dateAdded,
-                     int repetitions, double easeFactor, int interval, boolean isNewCard) {
+                     int repetitions, double easeFactor, int interval, boolean isNewCard, boolean isRelearning) {
         this.term = new SimpleStringProperty(term);
         this.definition = new SimpleStringProperty(definition);
         this.type = new SimpleStringProperty(type);
@@ -28,6 +29,7 @@ public class Flashcard {
         this.easeFactor = new SimpleObjectProperty<>(easeFactor);
         this.interval = new SimpleObjectProperty<>(interval);
         this.isNewCard = new SimpleBooleanProperty(isNewCard);
+        this.isRelearning = new SimpleBooleanProperty(isRelearning);
     }
 
     // Getters
@@ -40,6 +42,7 @@ public class Flashcard {
     public double getEaseFactor() { return easeFactor.get(); }
     public int getInterval() { return interval.get(); }
     public boolean getIsNewCard() { return isNewCard.get(); }
+    public boolean getIsRelearning() { return isRelearning.get(); }
 
     // Setters
     public void setTerm(String term) { this.term.set(term); }
@@ -51,6 +54,7 @@ public class Flashcard {
     public void setEaseFactor(double easeFactor) { this.easeFactor.set(easeFactor); }
     public void setInterval(int interval) { this.interval.set(interval); }
     public void setIsNewCard(boolean isNewCard) { this.isNewCard.set(isNewCard); }
+    public void setIsRelearning(boolean isRelearning) { this.isRelearning.set(isRelearning); }
 
     // Property getters
     public SimpleStringProperty termProperty() { return term; }
@@ -62,4 +66,5 @@ public class Flashcard {
     public SimpleObjectProperty<Double> easeFactorProperty() { return easeFactor; }
     public SimpleObjectProperty<Integer> intervalProperty() { return interval; }
     public SimpleBooleanProperty isNewCardProperty() { return isNewCard; }
+    public SimpleBooleanProperty isRelearningProperty() { return isRelearning; }
 }

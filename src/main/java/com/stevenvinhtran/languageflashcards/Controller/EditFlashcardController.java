@@ -66,6 +66,7 @@ public class EditFlashcardController {
         flashcard.setEaseFactor(Double.parseDouble(easeFactorField.getText()));
         flashcard.setInterval(Integer.parseInt(intervalField.getText()));
         // isNewCard will not be changed
+        // isRelearning will not be changed
 
         CSVProcessor.updateFlashcard(oldFlashcard, flashcard);
         new SceneSwitcher("browser-view.fxml", "Browser");
@@ -87,7 +88,8 @@ public class EditFlashcardController {
                 flashcard.getRepetitions(),
                 flashcard.getEaseFactor(),
                 flashcard.getInterval(),
-                flashcard.getIsNewCard()
+                flashcard.getIsNewCard(),
+                flashcard.getIsRelearning()
         );
 
         termTextField.setText(flashcard.getTerm());
@@ -98,5 +100,6 @@ public class EditFlashcardController {
         easeFactorField.setText(String.valueOf(flashcard.getEaseFactor()));
         intervalField.setText(String.valueOf(flashcard.getInterval()));
         // isNewCard will not be changed, so there is no need to have it here
+        // isRelearning will not be changed, so there is no need to have it here
     }
 }

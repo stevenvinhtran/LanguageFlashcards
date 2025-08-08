@@ -27,10 +27,10 @@ public class LanguageFlashcardsApplication extends Application {
 
         LanguageFlashcardsApplication.stage = stage;
 
-        ArrayList<String> settings = CSVProcessor.loadSettings();
-        int newVocabCardsPerDay = Integer.parseInt(settings.get(0));
-        int newGrammarCardsPerDay = Integer.parseInt(settings.get(1));
-        Settings.updateSettings(newVocabCardsPerDay, newGrammarCardsPerDay, settings.get(2), settings.get(3));
+        ArrayList<String> settingsList = CSVProcessor.loadSettings();
+        int newVocabCardsPerDay = Integer.parseInt(settingsList.get(0));
+        int newGrammarCardsPerDay = Integer.parseInt(settingsList.get(1));
+        Settings.updateSettings(newVocabCardsPerDay, newGrammarCardsPerDay, settingsList.get(2), settingsList.get(3));
     }
 
     public static void main(String[] args) {

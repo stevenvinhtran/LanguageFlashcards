@@ -62,7 +62,7 @@ public class AddFlashcardController {
             flashcard = new Flashcard(
                     term, definition, type,
                     reviewDate, now,
-                    0, 2.5, 0, true
+                    0, 2.5, 0, true, false
             );
 
             CSVProcessor.addFlashcard(flashcard);

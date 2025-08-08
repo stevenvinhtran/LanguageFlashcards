@@ -13,7 +13,7 @@ public class CSVProcessor {
     private static final Path FLASHCARD_CSV_PATH = resolvePath("data/flashcards.csv");
     private static final Path SETTINGS_CSV_PATH = resolvePath("data/settings.csv");
     private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-    private static final List<String> flashcardsHeader = Arrays.asList("term,definition,type,reviewDate,dateAdded,repetitions,easeFactor,interval,isNewCard");
+    private static final List<String> flashcardsHeader = Arrays.asList("term,definition,type,reviewDate,dateAdded,repetitions,easeFactor,interval,isNewCard,isRelearning");
     private static final List<String> settingsHeader = Arrays.asList("newVocabCardsPerDay,newGrammarCardsPerDay,learningSteps,relearningSteps");
 
     // Public Methods
@@ -96,11 +96,12 @@ public class CSVProcessor {
                     double easeFactor = Double.parseDouble(values[6]);
                     int interval = Integer.parseInt(values[7]);
                     boolean isNewCard = Boolean.parseBoolean(values[8]);
+                    boolean isRelearning = Boolean.parseBoolean(values[9]);
 
                     flashcards.add(new Flashcard(
                             values[0], values[1], values[2],
                             reviewDate, dateAdded,
-                            repetitions, easeFactor, interval, isNewCard
+                            repetitions, easeFactor, interval, isNewCard, isRelearning
                     ));
                 }
             }
@@ -127,15 +128,15 @@ public class CSVProcessor {
                 }
 
                 String[] values = line.split(",");
-                if (values.length >= 8 && values[0].equals(updated.getTerm()) && !updated.getTerm().equals(old.getTerm())) {
+                if (values.length >= 9 && values[0].equals(updated.getTerm()) && !updated.getTerm().equals(old.getTerm())) {
                     hasDuplicate = true;
                     lines.add(line);
                     JOptionPane.showMessageDialog(null, "Duplicate Term!", "Error", JOptionPane.ERROR_MESSAGE);
-                } else if (!hasDuplicate && values.length >= 8 &&
+                } else if (!hasDuplicate && values.length >= 9 &&
                         values[0].equals(old.getTerm()) &&
                         values[1].equals(old.getDefinition()) &&
                         values[2].equals(old.getType())) {
-                    lines.add(createCSVLine(updated));
+                    lines.add(createFlashcardCSVLine(updated));
                 } else {
                     lines.add(line);
                 }
@@ -163,7 +164,7 @@ public class CSVProcessor {
                     if (matchingOldCard != null) {
                         Flashcard updatedCard = findUpdatedCard(matchingOldCard, (ArrayList<Flashcard>) newDeck);
                         if (updatedCard != null) {
-                            lines.add(createCSVLine(updatedCard));
+                            lines.add(createFlashcardCSVLine(updatedCard));
                             newDeck.remove(updatedCard);
                             continue;
                         }
@@ -173,7 +174,7 @@ public class CSVProcessor {
             }
 
             for (Flashcard newCard : newDeck) {
-                lines.add(createCSVLine(newCard));
+                lines.add(createFlashcardCSVLine(newCard));
             }
 
             writeCSV(FLASHCARD_CSV_PATH, lines);
@@ -198,7 +199,7 @@ public class CSVProcessor {
                 }
 
                 String[] values = line.split(",");
-                if (values.length >= 8 && values[0].equals(flashcard.getTerm())) {
+                if (values.length >= 9 && values[0].equals(flashcard.getTerm())) {
                     hasDuplicate = true;
                     lines.add(line);
                     JOptionPane.showMessageDialog(null, "Duplicate Term!", "Error", JOptionPane.ERROR_MESSAGE);
@@ -208,7 +209,7 @@ public class CSVProcessor {
             }
 
             if (!hasDuplicate) {
-                lines.add(createCSVLine(flashcard));
+                lines.add(createFlashcardCSVLine(flashcard));
             }
 
             writeCSV(FLASHCARD_CSV_PATH, lines);
@@ -234,7 +235,7 @@ public class CSVProcessor {
                     }
 
                     String[] values = line.split(",");
-                    if (!(values.length >= 8 &&
+                    if (!(values.length >= 9 &&
                             values[0].equals(flashcard.getTerm()) &&
                             values[1].equals(flashcard.getDefinition()) &&
                             values[2].equals(flashcard.getType()))) {
@@ -317,7 +318,7 @@ public class CSVProcessor {
                 .orElse(null);
     }
 
-    private static String createCSVLine(Flashcard card) {
+    private static String createFlashcardCSVLine(Flashcard card) {
         return String.join(",",
                 card.getTerm(),
                 card.getDefinition(),
@@ -327,7 +328,8 @@ public class CSVProcessor {
                 String.valueOf(card.getRepetitions()),
                 String.valueOf(card.getEaseFactor()),
                 String.valueOf(card.getInterval()),
-                String.valueOf(card.getIsNewCard())
+                String.valueOf(card.getIsNewCard()),
+                String.valueOf(card.getIsRelearning())
         );
     }
 }
