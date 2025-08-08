@@ -50,8 +50,8 @@ public class SettingsController {
     public void initialize() {
         Settings settings = new Settings();
 
-        vocabularySpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 9999, settings.getNewVocabCardsPerDay()));
-        grammarSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 9999, settings.getNewGrammarCardsPerDay()));
+        vocabularySpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 9999, settings.getNewVocabCardsPerDay()));
+        grammarSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 9999, settings.getNewGrammarCardsPerDay()));
 
         vocabularySpinner.getEditor().setTextFormatter(new TextFormatter<>(change -> {
             String newText = change.getControlNewText();

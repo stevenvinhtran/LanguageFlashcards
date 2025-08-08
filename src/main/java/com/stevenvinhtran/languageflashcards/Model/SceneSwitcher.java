@@ -2,6 +2,7 @@ package com.stevenvinhtran.languageflashcards.Model;
 
 import com.stevenvinhtran.languageflashcards.Controller.BrowserController;
 import com.stevenvinhtran.languageflashcards.Controller.EditFlashcardController;
+import com.stevenvinhtran.languageflashcards.Controller.HomeController;
 import com.stevenvinhtran.languageflashcards.LanguageFlashcardsApplication;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -25,6 +26,8 @@ public class SceneSwitcher {
             BrowserController browserController = fxmlLoader.getController();
             browserController.loadFlashcardTable();
         }
+
+        System.out.println("Scene switched to " + fxml);
     }
 
     public SceneSwitcher(String fxml) throws IOException {
@@ -39,6 +42,8 @@ public class SceneSwitcher {
             BrowserController browserController = fxmlLoader.getController();
             browserController.loadFlashcardTable();
         }
+
+        System.out.println("Scene switched to " + fxml);
     }
 
     // Switch scene to Edit Flashcard
@@ -52,6 +57,7 @@ public class SceneSwitcher {
         stage.show();
         EditFlashcardController editFlashcardController = fxmlLoader.getController();
         editFlashcardController.setFlashcard(flashcard);
-    }
 
+        System.out.println("Scene switched to edit-flashcard-view.fxml");
+    }
 }

@@ -102,6 +102,8 @@ public class BrowserController {
         sortByMenu.setText(allReviewsMenuItem.getText());
         ObservableList<Flashcard> flashcards = FXCollections.observableList(CSVProcessor.loadFlashcards());
         flashcardsTable.setItems(flashcards);
+
+        System.out.println("Flashcard Table loaded");
     }
 
     @FXML

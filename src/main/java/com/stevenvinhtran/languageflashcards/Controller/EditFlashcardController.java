@@ -3,7 +3,7 @@ package com.stevenvinhtran.languageflashcards.Controller;
 import com.stevenvinhtran.languageflashcards.Model.CSVProcessor;
 import com.stevenvinhtran.languageflashcards.Model.Flashcard;
 import com.stevenvinhtran.languageflashcards.Model.SceneSwitcher;
-import javafx.event.ActionEvent;
+import com.stevenvinhtran.languageflashcards.Model.Settings;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
@@ -69,6 +69,7 @@ public class EditFlashcardController {
         // isRelearning will not be changed
 
         CSVProcessor.updateFlashcard(oldFlashcard, flashcard);
+        Settings.scheduleCards(CSVProcessor.loadFlashcards());
         new SceneSwitcher("browser-view.fxml", "Browser");
     }
 

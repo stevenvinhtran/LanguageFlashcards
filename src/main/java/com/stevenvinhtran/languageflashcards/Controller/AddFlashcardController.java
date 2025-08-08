@@ -3,7 +3,7 @@ package com.stevenvinhtran.languageflashcards.Controller;
 import com.stevenvinhtran.languageflashcards.Model.CSVProcessor;
 import com.stevenvinhtran.languageflashcards.Model.Flashcard;
 import com.stevenvinhtran.languageflashcards.Model.SceneSwitcher;
-import javafx.event.ActionEvent;
+import com.stevenvinhtran.languageflashcards.Model.Settings;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
@@ -36,17 +36,17 @@ public class AddFlashcardController {
     @FXML private MenuItem grammarMenuItem;
 
     @FXML
-    void onVocabularyItemSelect(ActionEvent event) {
+    void onVocabularyItemSelect() {
         typeMenuButton.setText(vocabularyMenuItem.getText());
     }
 
     @FXML
-    void onGrammarItemSelect(ActionEvent event) {
+    void onGrammarItemSelect() {
         typeMenuButton.setText(grammarMenuItem.getText());
     }
 
     @FXML
-    void onCreateFlashcardClick(ActionEvent event) throws IOException {
+    void onCreateFlashcardClick() throws IOException {
         String term = termTextField.getText();
         String definition = definitionTextArea.getText();
         String type = typeMenuButton.getText();
@@ -66,12 +66,13 @@ public class AddFlashcardController {
             );
 
             CSVProcessor.addFlashcard(flashcard);
+            Settings.scheduleCards(CSVProcessor.loadFlashcards());
             new SceneSwitcher("browser-view.fxml", "Browser");
         }
     }
 
     @FXML
-    void returnToBrowserScene(ActionEvent event) throws IOException {
+    void returnToBrowserScene() throws IOException {
         new SceneSwitcher("browser-view.fxml", "Browser");
     }
 }

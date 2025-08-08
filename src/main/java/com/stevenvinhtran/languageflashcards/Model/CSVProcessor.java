@@ -40,6 +40,8 @@ public class CSVProcessor {
             applyAndSaveDefaultSettings(settings, "Failed to load settings\nDefault settings applied\n" + e.getMessage());
             e.printStackTrace();
         }
+
+        System.out.println("loadSettings() run");
         return settings;
     }
 
@@ -73,6 +75,7 @@ public class CSVProcessor {
             JOptionPane.showMessageDialog(null, "Failed to save settings: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             e.printStackTrace();
         }
+        System.out.println("saveSettings() run");
     }
 
     public static ArrayList<Flashcard> loadFlashcards() {
@@ -109,6 +112,7 @@ public class CSVProcessor {
             e.printStackTrace();
         }
 
+        System.out.println("loadFlashcards() run");
         return flashcards;
     }
 
@@ -146,6 +150,8 @@ public class CSVProcessor {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        System.out.println("updateFlashcard() run");
     }
 
     public static void updateDeck(List<Flashcard> oldDeck, List<Flashcard> newDeck) {
@@ -181,6 +187,8 @@ public class CSVProcessor {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        System.out.println("updateDeck() run");
     }
 
     public static void addFlashcard(Flashcard flashcard) {
@@ -216,6 +224,8 @@ public class CSVProcessor {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        System.out.println("addFlashcard() run");
     }
 
     public static void deleteFlashcard(Flashcard flashcard) {
@@ -248,12 +258,15 @@ public class CSVProcessor {
                 e.printStackTrace();
             }
         }
+
+        System.out.println("deleteFlashcard() run");
     }
 
 
     // Helper Methods
 
     private static Path resolvePath(String relativePath) {
+        System.out.println("resolvePath() run");
         return Paths.get(System.getProperty("user.dir")).resolve(relativePath);
     }
 
@@ -266,6 +279,7 @@ public class CSVProcessor {
             JOptionPane.showMessageDialog(null, path + " not found or exists but has no header. Default will be created with header.", "Error", JOptionPane.ERROR_MESSAGE);
             Files.write(path, headerIfMissing);
         }
+        System.out.println("readCSV() run");
         return Files.readAllLines(path);
     }
 
@@ -273,6 +287,7 @@ public class CSVProcessor {
     private static void writeCSV(Path path, List<String> lines) throws IOException {
         Files.createDirectories(path.getParent());
         Files.write(path, lines);
+        System.out.println("writeCSV() run");
     }
 
     private static List<String> parseCSVLine(String line) {
@@ -291,6 +306,7 @@ public class CSVProcessor {
             }
         }
         values.add(currentValue.toString());
+        System.out.println("parseCSVLine() run");
         return values;
     }
 
@@ -298,9 +314,11 @@ public class CSVProcessor {
         JOptionPane.showMessageDialog(null, message, "Error", JOptionPane.ERROR_MESSAGE);
         settings.addAll(Arrays.asList("20", "10", "30,1440,4320", "30,1440"));
         saveSettings(20, 10, new int[]{30, 1440, 4320}, new int[]{30, 1440});
+        System.out.println("applyAndSaveDefaultSettings() run");
     }
 
     private static Flashcard findMatchingFlashcard(String[] values, ArrayList<Flashcard> deck) {
+        System.out.println("findMatchingFlashcard() run");
         return deck.stream()
                 .filter(card -> card.getTerm().equals(values[0]) &&
                         card.getDefinition().equals(values[1]) &&
@@ -310,6 +328,7 @@ public class CSVProcessor {
     }
 
     private static Flashcard findUpdatedCard(Flashcard oldCard, ArrayList<Flashcard> newDeck) {
+        System.out.println("findUpdatedCard() run");
         return newDeck.stream()
                 .filter(card -> card.getTerm().equals(oldCard.getTerm()) &&
                         card.getDefinition().equals(oldCard.getDefinition()) &&
@@ -319,6 +338,7 @@ public class CSVProcessor {
     }
 
     private static String createFlashcardCSVLine(Flashcard card) {
+        System.out.println("createFlashcardCSVLine() run");
         return String.join(",",
                 card.getTerm(),
                 card.getDefinition(),

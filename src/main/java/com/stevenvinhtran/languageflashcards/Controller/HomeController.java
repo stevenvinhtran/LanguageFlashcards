@@ -36,8 +36,7 @@ public class HomeController {
     }
 
     @FXML
-    void goToVocabularyScene() {
-
+    void goToVocabularyScene() throws IOException {
+        new SceneSwitcher("vocabulary-view.fxml", "Vocabulary");
     }
-
 }
