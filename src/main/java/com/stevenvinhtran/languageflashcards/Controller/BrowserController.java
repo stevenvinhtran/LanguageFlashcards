@@ -9,7 +9,9 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import javax.swing.*;
 import java.io.IOException;
@@ -31,6 +33,12 @@ public class BrowserController {
     private Button editButton;
     @FXML
     private Label sortByLabel;
+
+    @FXML
+    private TextField searchField;
+    @FXML
+    private Text numberOfCardsText;
+
     @FXML private SplitMenuButton sortByMenu;
     @FXML private MenuItem todayMenuItem;
     @FXML private MenuItem threeDaysMenuItem;
@@ -80,28 +88,68 @@ public class BrowserController {
         new SceneSwitcher("home-view.fxml", "Home");
     }
 
-    @FXML void setTodayMenuItem() {sortByMenu.setText(todayMenuItem.getText()); sortFlashcards();};
-    @FXML void setThreeDaysMenuItem() {sortByMenu.setText(threeDaysMenuItem.getText()); sortFlashcards();};
-    @FXML void setSevenDaysMenuItem() {sortByMenu.setText(sevenDaysMenuItem.getText()); sortFlashcards();};
-    @FXML void setThirtyDaysMenuItem() {sortByMenu.setText(thirtyDaysMenuItem.getText()); sortFlashcards();};
-    @FXML void setThreeMonthsMenuItem() {sortByMenu.setText(threeMonthsMenuItem.getText()); sortFlashcards();};
-    @FXML void setSixMonthsMenuItem() {sortByMenu.setText(sixMonthsMenuItem.getText()); sortFlashcards();};
-    @FXML void setTwelveMonthsMenuItem() {sortByMenu.setText(twelveMonthsMenuItem.getText()); sortFlashcards();};
-    @FXML void setAllReviewsMenuItem() {sortByMenu.setText(allReviewsMenuItem.getText()); sortFlashcards();};
-
-    @FXML
-    void sortFlashcards() {
-        ObservableList<Flashcard> sortedFlashcards = FXCollections.observableList(CSVProcessor.loadFlashcards());
-        String selection = sortByMenu.getText();
-        System.out.println(selection);
-        // All Flashcards, Today, Next 7 Days, Next 30 days, Next 3 months, Next 6 months, Next 12 months
-    }
+    @FXML void setTodayMenuItem() {sortByMenu.setText(todayMenuItem.getText()); loadFlashcardTable();};
+    @FXML void setThreeDaysMenuItem() {sortByMenu.setText(threeDaysMenuItem.getText()); loadFlashcardTable();};
+    @FXML void setSevenDaysMenuItem() {sortByMenu.setText(sevenDaysMenuItem.getText()); loadFlashcardTable();};
+    @FXML void setThirtyDaysMenuItem() {sortByMenu.setText(thirtyDaysMenuItem.getText()); loadFlashcardTable();};
+    @FXML void setThreeMonthsMenuItem() {sortByMenu.setText(threeMonthsMenuItem.getText()); loadFlashcardTable();};
+    @FXML void setSixMonthsMenuItem() {sortByMenu.setText(sixMonthsMenuItem.getText()); loadFlashcardTable();};
+    @FXML void setTwelveMonthsMenuItem() {sortByMenu.setText(twelveMonthsMenuItem.getText()); loadFlashcardTable();};
+    @FXML void setAllReviewsMenuItem() {sortByMenu.setText(allReviewsMenuItem.getText()); loadFlashcardTable();};
 
     @FXML
     public void loadFlashcardTable() {
-        sortByMenu.setText(allReviewsMenuItem.getText());
-        ObservableList<Flashcard> flashcards = FXCollections.observableList(CSVProcessor.loadFlashcards());
-        flashcardsTable.setItems(flashcards);
+        ObservableList<Flashcard> sortedFlashcards = FXCollections.observableList(CSVProcessor.loadFlashcards());
+        LocalDate now = LocalDate.now();
+        String selection = sortByMenu.getText();
+        int daysToSearch = 0;
+
+        if (!selection.equals("All Reviews")) {
+            switch (selection) {
+                case "Today":
+                    break;
+                case "Next 3 days":
+                    daysToSearch = 3;
+                    break;
+                case "Next 7 days":
+                    daysToSearch = 7;
+                    break;
+                case "Next 30 days":
+                    daysToSearch = 30;
+                    break;
+                case "Next 3 months":
+                    daysToSearch = 90;
+                    break;
+                case "Next 6 months":
+                    daysToSearch = 183;
+                    break;
+                case "Next 12 months":
+                    daysToSearch = 365;
+                    break;
+            }
+
+            for (int i = 0; i < sortedFlashcards.size(); i++) {
+                LocalDate latestDay = sortedFlashcards.get(i).getReviewDate().toLocalDate();
+                if (!latestDay.equals(now.plusDays(daysToSearch)) && !latestDay.isBefore(now.plusDays(daysToSearch))) {
+                    sortedFlashcards.remove(i);
+                    i--;
+                }
+            }
+        }
+
+        for (int i = 0; i < sortedFlashcards.size(); i++) {
+            String term = sortedFlashcards.get(i).getTerm().replaceAll("\\s+", "").toLowerCase();
+            String definition = sortedFlashcards.get(i).getDefinition().replaceAll("\\s+", "").toLowerCase();
+            String search = searchField.getText().replaceAll("\\s+", "").toLowerCase();
+
+            if (!term.contains(search) && !definition.contains(search)) {
+                sortedFlashcards.remove(i);
+                i--;
+            }
+        }
+
+        numberOfCardsText.setText(sortedFlashcards.size() + " Cards");
+        flashcardsTable.setItems(sortedFlashcards);
     }
 
     @FXML

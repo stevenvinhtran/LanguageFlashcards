@@ -1,47 +1,219 @@
 term,definition,type,reviewDate,dateAdded,repetitions,easeFactor,interval,isNewCard,isRelearning
-Bonjour,"Hello in French, often used formally",Vocabulary,2025-08-08 00:00:00,2025-07-01 14:30:00,0,2.5,0,true,false
-ありがとう,"Thank you in Japanese, casual form",Vocabulary,2025-08-08 00:00:00,2025-07-02 09:45:00,1,2.5,0,false,false
-Hola,"Hello in Spanish, used informally",Vocabulary,2025-08-08 00:00:00,2025-07-03 10:15:00,0,2.5,0,true,false
-"Hello, friend",A warm greeting to a friend,Vocabulary,2025-08-08 00:00:00,2025-07-04 11:00:00,0,2.5,0,true,false
-Guten Morgen,Good morning in German,Vocabulary,2025-08-08 00:00:00,2025-07-05 07:30:00,1,2.5,0,false,false
-おはようございます,Good morning in Japanese (formal),Vocabulary,2025-08-08 00:00:00,2025-07-06 07:45:00,0,2.5,0,true,false
-Salut,"Hi in French, casual greeting",Vocabulary,2025-08-08 00:00:00,2025-07-07 12:10:00,0,2.5,0,true,false
-Ciao,Hello or goodbye in Italian,Vocabulary,2025-08-08 00:00:00,2025-07-08 16:00:00,0,2.5,0,true,false
-"Please, sit down",An instruction to take a seat,Vocabulary,2025-08-08 00:00:00,2025-07-09 18:45:00,0,2.5,0,true,false
-Danke,Thank you in German,Vocabulary,2025-08-08 00:00:00,2025-07-10 14:25:00,0,2.5,0,true,false
-Me llamo Joe,My name is Joe,Grammar,2025-08-08 00:00:00,2025-07-11 10:00:00,0,2.5,0,true,false
-Je m'appelle Marie,My name is Marie,Grammar,2025-08-08 00:00:00,2025-07-12 09:50:00,0,2.5,0,true,false
-Ich bin müde,I am tired,Grammar,2025-08-08 00:00:00,2025-07-13 08:40:00,0,2.5,0,true,false
-"Can I, please, have water?",A polite request for water,Grammar,2025-08-08 00:00:00,2025-07-14 11:30:00,0,2.5,0,true,false
-Estoy aprendiendo español,I am learning Spanish,Grammar,2025-08-08 00:00:00,2025-07-15 12:20:00,0,2.5,0,true,false
-Je suis étudiant,I am a student,Grammar,2025-08-08 00:00:00,2025-07-16 13:15:00,0,2.5,0,true,false
-"After lunch, we study",Describes sequence of events,Grammar,2025-08-08 00:00:00,2025-07-17 14:05:00,0,2.5,0,true,false
-Das ist mein Buch,That is my book,Grammar,2025-08-08 00:00:00,2025-07-18 09:00:00,0,2.5,0,true,false
-Wie heißt du?,What is your name?,Grammar,2025-08-08 00:00:00,2025-07-19 08:15:00,0,2.5,0,true,false
-"Although it rained, we went outside",Example of concessive clause,Grammar,2025-08-08 00:00:00,2025-07-20 15:10:00,0,2.5,0,true,false
-Merhaba,Hello in Turkish,Vocabulary,2025-08-08 00:00:00,2025-07-21 09:40:00,0,2.5,0,true,false
-Privet,Hello in Russian,Vocabulary,2025-08-08 00:00:00,2025-07-22 10:50:00,0,2.5,0,true,false
-Shalom,Hello or peace in Hebrew,Vocabulary,2025-08-08 00:00:00,2025-07-23 12:45:00,0,2.5,0,true,false
-Kamusta,Hello in Filipino,Vocabulary,2025-08-08 00:00:00,2025-07-24 13:30:00,0,2.5,0,true,false
-"Yes, I agree",Expression of agreement,Vocabulary,2025-08-08 00:00:00,2025-07-25 14:10:00,0,2.5,0,true,false
-Por favor,Please in Spanish,Vocabulary,2025-08-08 00:00:00,2025-07-26 08:20:00,0,2.5,0,true,false
-Excusez-moi,Excuse me in French,Vocabulary,2025-08-08 00:00:00,2025-07-27 09:35:00,0,2.5,0,true,false
-Lo siento,I'm sorry in Spanish,Vocabulary,2025-08-08 00:00:00,2025-07-28 10:10:00,0,2.5,0,true,false
-Perdón,Pardon me in Spanish,Vocabulary,2025-08-08 00:00:00,2025-07-29 11:25:00,0,2.5,0,true,false
-"Before the sun rises, we leave",Time clause example,Grammar,2025-08-09 00:00:00,2025-07-30 06:15:00,0,2.5,0,true,false
-Voy a la tienda,I am going to the store,Grammar,2025-08-09 00:00:00,2025-07-31 10:00:00,0,2.5,0,true,false
-Nous allons manger,We are going to eat,Grammar,2025-08-09 00:00:00,2025-07-31 12:00:00,0,2.5,0,true,false
-Ich werde schlafen,I am going to sleep,Grammar,2025-08-09 00:00:00,2025-08-01 21:15:00,0,2.5,0,true,false
-"Even though it’s cold, she swims",Another concessive clause,Grammar,2025-08-09 00:00:00,2025-08-02 07:00:00,0,2.5,0,true,false
-Je vais au marché,I am going to the market,Grammar,2025-08-09 00:00:00,2025-08-03 08:50:00,0,2.5,0,true,false
-Mi casa es su casa,My house is your house,Grammar,2025-08-09 00:00:00,2025-08-04 09:30:00,0,2.5,0,true,false
-"Once we finish, we can relax",Sequence clause example,Grammar,2025-08-09 00:00:00,2025-08-05 16:45:00,0,2.5,0,true,false
-Es ist kalt,It is cold,Grammar,2025-08-09 00:00:00,2025-08-06 06:25:00,0,2.5,0,true,false
-Je suis fatigué,I am tired,Grammar,2025-08-09 00:00:00,2025-08-07 22:00:00,0,2.5,0,true,false
-Annyeonghaseyo,Hello in Korean,Vocabulary,2025-08-09 00:00:00,2025-08-08 09:15:00,0,2.5,0,true,false
-Xin chào,Hello in Vietnamese,Vocabulary,2025-08-09 00:00:00,2025-08-08 10:30:00,0,2.5,0,true,false
-"Good evening, sir",A formal evening greeting,Vocabulary,2025-08-10 00:00:00,2025-08-08 18:00:00,0,2.5,0,true,false
-Selamat pagi,Good morning in Indonesian,Vocabulary,2025-08-08 00:00:00,2025-08-08 07:10:00,0,2.5,0,true,false
-Tere,Hello in Estonian,Vocabulary,2025-08-10 00:00:00,2025-08-08 12:20:00,0,2.5,0,true,false
-Sveiki,Hello in Latvian,Vocabulary,2025-08-10 00:00:00,2025-08-08 13:15:00,0,2.5,0,true,false
-Labas,Hello in Lithuanian,Vocabulary,2025-08-10 00:00:00,2025-08-08 14:05:00,0,2.5,0,true,false
+"Hola, mundo","Hello, world",Vocabulary,2025-08-08 00:00:00,2025-08-07 00:00:00,0,2.5,0,true,false
+"Bonjour, le monde","Hello, world",Vocabulary,2025-08-09 00:00:00,2025-08-07 00:00:01,0,2.5,0,true,false
+"Hallo, Welt","Hello, world",Vocabulary,2025-08-10 00:00:00,2025-08-07 00:00:02,0,2.5,0,true,false
+"Ciao, mondo","Hello, world",Vocabulary,2025-08-11 00:00:00,2025-08-07 00:00:03,0,2.5,0,true,false
+"Sí, por favor","Yes, please",Vocabulary,2025-08-12 00:00:00,2025-08-07 00:00:04,0,2.5,0,true,false
+"No, gracias","No, thanks",Vocabulary,2025-08-13 00:00:00,2025-08-07 00:00:05,0,2.5,0,true,false
+"Oui, s'il vous plaît","Yes, please",Vocabulary,2025-08-14 00:00:00,2025-08-07 00:00:06,0,2.5,0,true,false
+"Non, merci","No, thanks",Vocabulary,2025-08-15 00:00:00,2025-08-07 00:00:07,0,2.5,0,true,false
+"Ja, bitte","Yes, please",Vocabulary,2025-08-16 00:00:00,2025-08-07 00:00:08,0,2.5,0,true,false
+"Nein, danke","No, thanks",Vocabulary,2025-08-17 00:00:00,2025-08-07 00:00:09,0,2.5,0,true,false
+"Sì, per favore","Yes, please",Vocabulary,2025-08-18 00:00:00,2025-08-07 00:00:10,0,2.5,0,true,false
+"No, grazie","No, thanks",Vocabulary,2025-08-19 00:00:00,2025-08-07 00:00:11,0,2.5,0,true,false
+"Perdón, señor","Excuse me, sir",Vocabulary,2025-08-20 00:00:00,2025-08-07 00:00:12,0,2.5,0,true,false
+"Pardon, madame","Excuse me, ma'am",Vocabulary,2025-08-21 00:00:00,2025-08-07 00:00:13,0,2.5,0,true,false
+"Entschuldigung, bitte","Excuse me, please",Vocabulary,2025-08-22 00:00:00,2025-08-07 00:00:14,0,2.5,0,true,false
+"Scusi, signore","Excuse me, sir",Vocabulary,2025-08-23 00:00:00,2025-08-07 00:00:15,0,2.5,0,true,false
+Me llamo Ana,My name is Ana,Grammar,2025-08-08 00:00:00,2025-08-07 00:00:16,0,2.5,0,true,false
+Je m'appelle Paul,My name is Paul,Grammar,2025-08-09 00:00:00,2025-08-07 00:00:17,0,2.5,0,true,false
+Ich heiße Lara,My name is Lara,Grammar,2025-08-10 00:00:00,2025-08-07 00:00:18,0,2.5,0,true,false
+Mi chiamo Luca,My name is Luca,Grammar,2025-08-11 00:00:00,2025-08-07 00:00:19,0,2.5,0,true,false
+Yo quiero agua,I want water,Grammar,2025-08-12 00:00:00,2025-08-07 00:00:20,0,2.5,0,true,false
+Je veux de l'eau,I want water,Grammar,2025-08-13 00:00:00,2025-08-07 00:00:21,0,2.5,0,true,false
+Ich möchte Wasser,I want water,Grammar,2025-08-14 00:00:00,2025-08-07 00:00:22,0,2.5,0,true,false
+Voglio acqua,I want water,Grammar,2025-08-15 00:00:00,2025-08-07 00:00:23,0,2.5,0,true,false
+Estoy cansado,I'm tired,Grammar,2025-08-16 00:00:00,2025-08-07 00:00:24,0,2.5,0,true,false
+Je suis fatigué,I'm tired,Grammar,2025-08-17 00:00:00,2025-08-07 00:00:25,0,2.5,0,true,false
+Ich bin müde,I'm tired,Grammar,2025-08-18 00:00:00,2025-08-07 00:00:26,0,2.5,0,true,false
+Sono stanco,I'm tired,Grammar,2025-08-19 00:00:00,2025-08-07 00:00:27,0,2.5,0,true,false
+Yo voy a casa,I'm going home,Grammar,2025-08-20 00:00:00,2025-08-07 00:00:28,0,2.5,0,true,false
+Je vais à la maison,I'm going home,Grammar,2025-08-21 00:00:00,2025-08-07 00:00:29,0,2.5,0,true,false
+Ich gehe nach Hause,I'm going home,Grammar,2025-08-22 00:00:00,2025-08-07 00:00:30,0,2.5,0,true,false
+Vado a casa,I'm going home,Grammar,2025-08-23 00:00:00,2025-08-07 00:00:31,0,2.5,0,true,false
+Buenos días,Good morning in Spanish,Vocabulary,2025-08-24 00:00:00,2025-08-07 00:00:32,0,2.5,0,true,false
+Buenas tardes,Good afternoon in Spanish,Vocabulary,2025-08-25 00:00:00,2025-08-07 00:00:33,0,2.5,0,true,false
+Buenas noches,Good night in Spanish,Vocabulary,2025-08-26 00:00:00,2025-08-07 00:00:34,0,2.5,0,true,false
+Bonjour,Good morning in French,Vocabulary,2025-08-27 00:00:00,2025-08-07 00:00:35,0,2.5,0,true,false
+Bonsoir,Good evening in French,Vocabulary,2025-08-28 00:00:00,2025-08-07 00:00:36,0,2.5,0,true,false
+Bonne nuit,Good night in French,Vocabulary,2025-08-29 00:00:00,2025-08-07 00:00:37,0,2.5,0,true,false
+Guten Morgen,Good morning in German,Vocabulary,2025-08-30 00:00:00,2025-08-07 00:00:38,0,2.5,0,true,false
+Guten Abend,Good evening in German,Vocabulary,2025-08-31 00:00:00,2025-08-07 00:00:39,0,2.5,0,true,false
+Gute Nacht,Good night in German,Vocabulary,2025-09-01 00:00:00,2025-08-07 00:00:40,0,2.5,0,true,false
+Buongiorno,Good morning in Italian,Vocabulary,2025-09-02 00:00:00,2025-08-07 00:00:41,0,2.5,0,true,false
+Buonasera,Good evening in Italian,Vocabulary,2025-09-03 00:00:00,2025-08-07 00:00:42,0,2.5,0,true,false
+Buonanotte,Good night in Italian,Vocabulary,2025-09-04 00:00:00,2025-08-07 00:00:43,0,2.5,0,true,false
+Gracias,Thanks in Spanish,Vocabulary,2025-09-05 00:00:00,2025-08-07 00:00:44,0,2.5,0,true,false
+Merci,Thanks in French,Vocabulary,2025-09-06 00:00:00,2025-08-07 00:00:45,0,2.5,0,true,false
+Danke,Thanks in German,Vocabulary,2025-09-07 00:00:00,2025-08-07 00:00:46,0,2.5,0,true,false
+Grazie,Thanks in Italian,Vocabulary,2025-09-08 00:00:00,2025-08-07 00:00:47,0,2.5,0,true,false
+Yo tengo hambre,I'm hungry,Grammar,2025-08-24 00:00:00,2025-08-07 00:00:48,0,2.5,0,true,false
+J'ai faim,I'm hungry,Grammar,2025-08-25 00:00:00,2025-08-07 00:00:49,0,2.5,0,true,false
+Ich habe Hunger,I'm hungry,Grammar,2025-08-26 00:00:00,2025-08-07 00:00:50,0,2.5,0,true,false
+Ho fame,I'm hungry,Grammar,2025-08-27 00:00:00,2025-08-07 00:00:51,0,2.5,0,true,false
+Yo tengo sed,I'm thirsty,Grammar,2025-08-28 00:00:00,2025-08-07 00:00:52,0,2.5,0,true,false
+J'ai soif,I'm thirsty,Grammar,2025-08-29 00:00:00,2025-08-07 00:00:53,0,2.5,0,true,false
+Ich habe Durst,I'm thirsty,Grammar,2025-08-30 00:00:00,2025-08-07 00:00:54,0,2.5,0,true,false
+Ho sete,I'm thirsty,Grammar,2025-08-31 00:00:00,2025-08-07 00:00:55,0,2.5,0,true,false
+Yo estudio español,I study Spanish,Grammar,2025-09-01 00:00:00,2025-08-07 00:00:56,0,2.5,0,true,false
+J'étudie le français,I study French,Grammar,2025-09-02 00:00:00,2025-08-07 00:00:57,0,2.5,0,true,false
+Ich lerne Deutsch,I learn German,Grammar,2025-09-03 00:00:00,2025-08-07 00:00:58,0,2.5,0,true,false
+Studio italiano,I study Italian,Grammar,2025-09-04 00:00:00,2025-08-07 00:00:59,0,2.5,0,true,false
+Yo leo un libro,I'm reading a book,Grammar,2025-09-05 00:00:00,2025-08-07 00:01:00,0,2.5,0,true,false
+Je lis un livre,I'm reading a book,Grammar,2025-09-06 00:00:00,2025-08-07 00:01:01,0,2.5,0,true,false
+Ich lese ein Buch,I'm reading a book,Grammar,2025-09-07 00:00:00,2025-08-07 00:01:02,0,2.5,0,true,false
+Leggo un libro,I'm reading a book,Grammar,2025-09-08 00:00:00,2025-08-07 00:01:03,0,2.5,0,true,false
+Yo escribo una carta,I'm writing a letter,Grammar,2025-09-09 00:00:00,2025-08-07 00:01:04,0,2.5,0,true,false
+J'écris une lettre,I'm writing a letter,Grammar,2025-09-10 00:00:00,2025-08-07 00:01:05,0,2.5,0,true,false
+Ich schreibe einen Brief,I'm writing a letter,Grammar,2025-09-11 00:00:00,2025-08-07 00:01:06,0,2.5,0,true,false
+Scrivo una lettera,I'm writing a letter,Grammar,2025-09-12 00:00:00,2025-08-07 00:01:07,0,2.5,0,true,false
+Yo corro cada día,I run every day,Grammar,2025-09-13 00:00:00,2025-08-07 00:01:08,0,2.5,0,true,false
+Je cours chaque jour,I run every day,Grammar,2025-09-14 00:00:00,2025-08-07 00:01:09,0,2.5,0,true,false
+Ich laufe jeden Tag,I run every day,Grammar,2025-09-15 00:00:00,2025-08-07 00:01:10,0,2.5,0,true,false
+Corro ogni giorno,I run every day,Grammar,2025-09-16 00:00:00,2025-08-07 00:01:11,0,2.5,0,true,false
+Agua,Water in Spanish,Vocabulary,2025-09-09 00:00:00,2025-08-07 00:01:12,0,2.5,0,true,false
+Eau,Water in French,Vocabulary,2025-09-10 00:00:00,2025-08-07 00:01:13,0,2.5,0,true,false
+Wasser,Water in German,Vocabulary,2025-09-11 00:00:00,2025-08-07 00:01:14,0,2.5,0,true,false
+Acqua,Water in Italian,Vocabulary,2025-09-12 00:00:00,2025-08-07 00:01:15,0,2.5,0,true,false
+Pan,Bread in Spanish,Vocabulary,2025-09-13 00:00:00,2025-08-07 00:01:16,0,2.5,0,true,false
+Pain,Bread in French,Vocabulary,2025-09-14 00:00:00,2025-08-07 00:01:17,0,2.5,0,true,false
+Brot,Bread in German,Vocabulary,2025-09-15 00:00:00,2025-08-07 00:01:18,0,2.5,0,true,false
+Pane,Bread in Italian,Vocabulary,2025-09-16 00:00:00,2025-08-07 00:01:19,0,2.5,0,true,false
+Leche,Milk in Spanish,Vocabulary,2025-09-17 00:00:00,2025-08-07 00:01:20,0,2.5,0,true,false
+Lait,Milk in French,Vocabulary,2025-09-18 00:00:00,2025-08-07 00:01:21,0,2.5,0,true,false
+Milch,Milk in German,Vocabulary,2025-09-19 00:00:00,2025-08-07 00:01:22,0,2.5,0,true,false
+Latte,Milk in Italian,Vocabulary,2025-09-20 00:00:00,2025-08-07 00:01:23,0,2.5,0,true,false
+Queso,Cheese in Spanish,Vocabulary,2025-09-21 00:00:00,2025-08-07 00:01:24,0,2.5,0,true,false
+Fromage,Cheese in French,Vocabulary,2025-09-22 00:00:00,2025-08-07 00:01:25,0,2.5,0,true,false
+Käse,Cheese in German,Vocabulary,2025-09-23 00:00:00,2025-08-07 00:01:26,0,2.5,0,true,false
+Formaggio,Cheese in Italian,Vocabulary,2025-09-24 00:00:00,2025-08-07 00:01:27,0,2.5,0,true,false
+Manzana,Apple in Spanish,Vocabulary,2025-09-25 00:00:00,2025-08-07 00:01:28,0,2.5,0,true,false
+Pomme,Apple in French,Vocabulary,2025-09-26 00:00:00,2025-08-07 00:01:29,0,2.5,0,true,false
+Apfel,Apple in German,Vocabulary,2025-09-27 00:00:00,2025-08-07 00:01:30,0,2.5,0,true,false
+Mela,Apple in Italian,Vocabulary,2025-09-28 00:00:00,2025-08-07 00:01:31,0,2.5,0,true,false
+Yo cocino la cena,I cook dinner,Grammar,2025-09-17 00:00:00,2025-08-07 00:01:32,0,2.5,0,true,false
+Je cuisine le dîner,I cook dinner,Grammar,2025-09-18 00:00:00,2025-08-07 00:01:33,0,2.5,0,true,false
+Ich koche das Abendessen,I cook dinner,Grammar,2025-09-19 00:00:00,2025-08-07 00:01:34,0,2.5,0,true,false
+Cucino la cena,I cook dinner,Grammar,2025-09-20 00:00:00,2025-08-07 00:01:35,0,2.5,0,true,false
+Yo duermo bien,I sleep well,Grammar,2025-09-21 00:00:00,2025-08-07 00:01:36,0,2.5,0,true,false
+Je dors bien,I sleep well,Grammar,2025-09-22 00:00:00,2025-08-07 00:01:37,0,2.5,0,true,false
+Ich schlafe gut,I sleep well,Grammar,2025-09-23 00:00:00,2025-08-07 00:01:38,0,2.5,0,true,false
+Dormo bene,I sleep well,Grammar,2025-09-24 00:00:00,2025-08-07 00:01:39,0,2.5,0,true,false
+Yo trabajo hoy,I work today,Grammar,2025-09-25 00:00:00,2025-08-07 00:01:40,0,2.5,0,true,false
+Je travaille aujourd'hui,I work today,Grammar,2025-09-26 00:00:00,2025-08-07 00:01:41,0,2.5,0,true,false
+Ich arbeite heute,I work today,Grammar,2025-09-27 00:00:00,2025-08-07 00:01:42,0,2.5,0,true,false
+Lavoro oggi,I work today,Grammar,2025-09-28 00:00:00,2025-08-07 00:01:43,0,2.5,0,true,false
+Yo camino al parque,I walk to the park,Grammar,2025-09-29 00:00:00,2025-08-07 00:01:44,0,2.5,0,true,false
+Je marche au parc,I walk to the park,Grammar,2025-09-30 00:00:00,2025-08-07 00:01:45,0,2.5,0,true,false
+Ich gehe zum Park,I walk to the park,Grammar,2025-10-01 00:00:00,2025-08-07 00:01:46,0,2.5,0,true,false
+Vado al parco,I go to the park,Grammar,2025-10-02 00:00:00,2025-08-07 00:01:47,0,2.5,0,true,false
+Yo compro pan,I buy bread,Grammar,2025-10-03 00:00:00,2025-08-07 00:01:48,0,2.5,0,true,false
+J'achète du pain,I buy bread,Grammar,2025-10-04 00:00:00,2025-08-07 00:01:49,0,2.5,0,true,false
+Ich kaufe Brot,I buy bread,Grammar,2025-10-05 00:00:00,2025-08-07 00:01:50,0,2.5,0,true,false
+Compro il pane,I buy bread,Grammar,2025-10-06 00:00:00,2025-08-07 00:01:51,0,2.5,0,true,false
+Perro,Dog in Spanish,Vocabulary,2025-09-29 00:00:00,2025-08-07 00:01:52,0,2.5,0,true,false
+Chat,Cat in French,Vocabulary,2025-09-30 00:00:00,2025-08-07 00:01:53,0,2.5,0,true,false
+Hund,Dog in German,Vocabulary,2025-10-01 00:00:00,2025-08-07 00:01:54,0,2.5,0,true,false
+Gatto,Cat in Italian,Vocabulary,2025-10-02 00:00:00,2025-08-07 00:01:55,0,2.5,0,true,false
+Casa,House in Spanish,Vocabulary,2025-10-03 00:00:00,2025-08-07 00:01:56,0,2.5,0,true,false
+Maison,House in French,Vocabulary,2025-10-04 00:00:00,2025-08-07 00:01:57,0,2.5,0,true,false
+Haus,House in German,Vocabulary,2025-10-05 00:00:00,2025-08-07 00:01:58,0,2.5,0,true,false
+Casa,House in Italian,Vocabulary,2025-10-06 00:00:00,2025-08-07 00:01:59,0,2.5,0,true,false
+Coche,Car in Spanish,Vocabulary,2025-10-07 00:00:00,2025-08-07 00:02:00,0,2.5,0,true,false
+Voiture,Car in French,Vocabulary,2025-10-08 00:00:00,2025-08-07 00:02:01,0,2.5,0,true,false
+Auto,Car in German,Vocabulary,2025-10-09 00:00:00,2025-08-07 00:02:02,0,2.5,0,true,false
+Macchina,Car in Italian,Vocabulary,2025-10-10 00:00:00,2025-08-07 00:02:03,0,2.5,0,true,false
+Rojo,Red (color) in Spanish,Vocabulary,2025-10-11 00:00:00,2025-08-07 00:02:04,0,2.5,0,true,false
+Rouge,Red (color) in French,Vocabulary,2025-10-12 00:00:00,2025-08-07 00:02:05,0,2.5,0,true,false
+Rot,Red (color) in German,Vocabulary,2025-10-13 00:00:00,2025-08-07 00:02:06,0,2.5,0,true,false
+Rosso,Red (color) in Italian,Vocabulary,2025-10-14 00:00:00,2025-08-07 00:02:07,0,2.5,0,true,false
+Azul,Blue (color) in Spanish,Vocabulary,2025-10-15 00:00:00,2025-08-07 00:02:08,0,2.5,0,true,false
+Bleu,Blue (color) in French,Vocabulary,2025-10-16 00:00:00,2025-08-07 00:02:09,0,2.5,0,true,false
+Blau,Blue (color) in German,Vocabulary,2025-10-17 00:00:00,2025-08-07 00:02:10,0,2.5,0,true,false
+Blu,Blue (color) in Italian,Vocabulary,2025-10-18 00:00:00,2025-08-07 00:02:11,0,2.5,0,true,false
+Verde,Green (color) in Spanish,Vocabulary,2025-10-19 00:00:00,2025-08-07 00:02:12,0,2.5,0,true,false
+Vert,Green (color) in French,Vocabulary,2025-10-20 00:00:00,2025-08-07 00:02:13,0,2.5,0,true,false
+Grün,Green (color) in German,Vocabulary,2025-10-21 00:00:00,2025-08-07 00:02:14,0,2.5,0,true,false
+Verde,Green (color) in Italian,Vocabulary,2025-10-22 00:00:00,2025-08-07 00:02:15,0,2.5,0,true,false
+Negro,Black (color) in Spanish,Vocabulary,2025-10-23 00:00:00,2025-08-07 00:02:16,0,2.5,0,true,false
+Noir,Black (color) in French,Vocabulary,2025-10-24 00:00:00,2025-08-07 00:02:17,0,2.5,0,true,false
+Schwarz,Black (color) in German,Vocabulary,2025-10-25 00:00:00,2025-08-07 00:02:18,0,2.5,0,true,false
+Nero,Black (color) in Italian,Vocabulary,2025-10-26 00:00:00,2025-08-07 00:02:19,0,2.5,0,true,false
+Blanco,White (color) in Spanish,Vocabulary,2025-10-27 00:00:00,2025-08-07 00:02:20,0,2.5,0,true,false
+Blanc,White (color) in French,Vocabulary,2025-10-28 00:00:00,2025-08-07 00:02:21,0,2.5,0,true,false
+Weiß,White (color) in German,Vocabulary,2025-10-29 00:00:00,2025-08-07 00:02:22,0,2.5,0,true,false
+Bianco,White (color) in Italian,Vocabulary,2025-10-30 00:00:00,2025-08-07 00:02:23,0,2.5,0,true,false
+"Sí, lo sé","Yes, I know",Vocabulary,2025-10-31 00:00:00,2025-08-07 00:02:24,0,2.5,0,true,false
+"Oui, je sais","Yes, I know",Vocabulary,2025-11-01 00:00:00,2025-08-07 00:02:25,0,2.5,0,true,false
+"Ja, ich weiß","Yes, I know",Vocabulary,2025-11-02 00:00:00,2025-08-07 00:02:26,0,2.5,0,true,false
+"Sì, lo so","Yes, I know",Vocabulary,2025-11-03 00:00:00,2025-08-07 00:02:27,0,2.5,0,true,false
+Me llamo José,My name is Jose,Grammar,2025-10-07 00:00:00,2025-08-07 00:02:28,0,2.5,0,true,false
+Je m'appelle Chloé,My name is Chloe,Grammar,2025-10-08 00:00:00,2025-08-07 00:02:29,0,2.5,0,true,false
+Ich heiße Jörg,My name is Jorg,Grammar,2025-10-09 00:00:00,2025-08-07 00:02:30,0,2.5,0,true,false
+Mi chiamo Giulia,My name is Giulia,Grammar,2025-10-10 00:00:00,2025-08-07 00:02:31,0,2.5,0,true,false
+Yo vivo en Madrid,I live in Madrid,Grammar,2025-10-11 00:00:00,2025-08-07 00:02:32,0,2.5,0,true,false
+J'habite à Paris,I live in Paris,Grammar,2025-10-12 00:00:00,2025-08-07 00:02:33,0,2.5,0,true,false
+Ich wohne in Berlin,I live in Berlin,Grammar,2025-10-13 00:00:00,2025-08-07 00:02:34,0,2.5,0,true,false
+Vivo a Roma,I live in Rome,Grammar,2025-10-14 00:00:00,2025-08-07 00:02:35,0,2.5,0,true,false
+Yo tengo un gato,I have a cat,Grammar,2025-10-15 00:00:00,2025-08-07 00:02:36,0,2.5,0,true,false
+J'ai un chat,I have a cat,Grammar,2025-10-16 00:00:00,2025-08-07 00:02:37,0,2.5,0,true,false
+Ich habe eine Katze,I have a cat,Grammar,2025-10-17 00:00:00,2025-08-07 00:02:38,0,2.5,0,true,false
+Ho un gatto,I have a cat,Grammar,2025-10-18 00:00:00,2025-08-07 00:02:39,0,2.5,0,true,false
+Yo necesito ayuda,I need help,Grammar,2025-10-19 00:00:00,2025-08-07 00:02:40,0,2.5,0,true,false
+J'ai besoin d'aide,I need help,Grammar,2025-10-20 00:00:00,2025-08-07 00:02:41,0,2.5,0,true,false
+Ich brauche Hilfe,I need help,Grammar,2025-10-21 00:00:00,2025-08-07 00:02:42,0,2.5,0,true,false
+Ho bisogno di aiuto,I need help,Grammar,2025-10-22 00:00:00,2025-08-07 00:02:43,0,2.5,0,true,false
+Yo entiendo,I understand,Grammar,2025-10-23 00:00:00,2025-08-07 00:02:44,0,2.5,0,true,false
+Je comprends,I understand,Grammar,2025-10-24 00:00:00,2025-08-07 00:02:45,0,2.5,0,true,false
+Ich verstehe,I understand,Grammar,2025-10-25 00:00:00,2025-08-07 00:02:46,0,2.5,0,true,false
+Capisco,I understand,Grammar,2025-10-26 00:00:00,2025-08-07 00:02:47,0,2.5,0,true,false
+Yo no entiendo,I don't understand,Grammar,2025-10-27 00:00:00,2025-08-07 00:02:48,0,2.5,0,true,false
+Je ne comprends pas,I don't understand,Grammar,2025-10-28 00:00:00,2025-08-07 00:02:49,0,2.5,0,true,false
+Ich verstehe nicht,I don't understand,Grammar,2025-10-29 00:00:00,2025-08-07 00:02:50,0,2.5,0,true,false
+Non capisco,I don't understand,Grammar,2025-10-30 00:00:00,2025-08-07 00:02:51,0,2.5,0,true,false
+Yo hablo un poco,I speak a little,Grammar,2025-10-31 00:00:00,2025-08-07 00:02:52,0,2.5,0,true,false
+Je parle un peu,I speak a little,Grammar,2025-11-01 00:00:00,2025-08-07 00:02:53,0,2.5,0,true,false
+Ich spreche ein bisschen,I speak a little,Grammar,2025-11-02 00:00:00,2025-08-07 00:02:54,0,2.5,0,true,false
+Parlo un po',I speak a little,Grammar,2025-11-03 00:00:00,2025-08-07 00:02:55,0,2.5,0,true,false
+"Por favor, más despacio","Please, more slowly",Vocabulary,2025-11-04 00:00:00,2025-08-07 00:02:56,0,2.5,0,true,false
+"S'il vous plaît, plus lentement","Please, more slowly",Vocabulary,2025-11-05 00:00:00,2025-08-07 00:02:57,0,2.5,0,true,false
+"Bitte, langsamer","Please, slower",Vocabulary,2025-11-06 00:00:00,2025-08-07 00:02:58,0,2.5,0,true,false
+"Per favore, più lentamente","Please, more slowly",Vocabulary,2025-11-07 00:00:00,2025-08-07 00:02:59,0,2.5,0,true,false
+Yo voy a estudiar,I'm going to study,Grammar,2025-11-04 00:00:00,2025-08-07 00:03:00,0,2.5,0,true,false
+Je vais étudier,I'm going to study,Grammar,2025-11-05 00:00:00,2025-08-07 00:03:01,0,2.5,0,true,false
+Ich werde lernen,I'm going to study,Grammar,2025-11-06 00:00:00,2025-08-07 00:03:02,0,2.5,0,true,false
+Vado a studiare,I'm going to study,Grammar,2025-11-07 00:00:00,2025-08-07 00:03:03,0,2.5,0,true,false
+Yo voy a viajar,I'm going to travel,Grammar,2025-11-08 00:00:00,2025-08-07 00:03:04,0,2.5,0,true,false
+Je vais voyager,I'm going to travel,Grammar,2025-11-09 00:00:00,2025-08-07 00:03:05,0,2.5,0,true,false
+Ich werde reisen,I'm going to travel,Grammar,2025-11-10 00:00:00,2025-08-07 00:03:06,0,2.5,0,true,false
+Vado a viaggiare,I'm going to travel,Grammar,2025-11-11 00:00:00,2025-08-07 00:03:07,0,2.5,0,true,false
+Yo voy a comer,I'm going to eat,Grammar,2025-11-12 00:00:00,2025-08-07 00:03:08,0,2.5,0,true,false
+Je vais manger,I'm going to eat,Grammar,2025-11-13 00:00:00,2025-08-07 00:03:09,0,2.5,0,true,false
+Ich werde essen,I'm going to eat,Grammar,2025-11-14 00:00:00,2025-08-07 00:03:10,0,2.5,0,true,false
+Vado a mangiare,I'm going to eat,Grammar,2025-11-15 00:00:00,2025-08-07 00:03:11,0,2.5,0,true,false
+Yo voy a dormir,I'm going to sleep,Grammar,2025-11-16 00:00:00,2025-08-07 00:03:12,0,2.5,0,true,false
+Je vais dormir,I'm going to sleep,Grammar,2025-11-17 00:00:00,2025-08-07 00:03:13,0,2.5,0,true,false
+Ich werde schlafen,I'm going to sleep,Grammar,2025-11-18 00:00:00,2025-08-07 00:03:14,0,2.5,0,true,false
+Vado a dormire,I'm going to sleep,Grammar,2025-11-19 00:00:00,2025-08-07 00:03:15,0,2.5,0,true,false
+Yo voy a llamar,I am going to call,Grammar,2025-11-20 00:00:00,2025-08-07 00:03:16,0,2.5,0,true,false
+Je vais appeler,I'm going to call,Grammar,2025-11-21 00:00:00,2025-08-07 00:03:17,0,2.5,0,true,false
+Ich werde anrufen,I'm going to call,Grammar,2025-11-22 00:00:00,2025-08-07 00:03:18,0,2.5,0,true,false
+Vado a chiamare,I'm going to call,Grammar,2025-11-23 00:00:00,2025-08-07 00:03:19,0,2.5,0,true,false
+Libro,Book in Spanish,Vocabulary,2025-11-08 00:00:00,2025-08-07 00:03:20,0,2.5,0,true,false
+Livre,Book in French,Vocabulary,2025-11-09 00:00:00,2025-08-07 00:03:21,0,2.5,0,true,false
+Buch,Book in German,Vocabulary,2025-11-10 00:00:00,2025-08-07 00:03:22,0,2.5,0,true,false
+Libro,Book in Italian,Vocabulary,2025-11-11 00:00:00,2025-08-07 00:03:23,0,2.5,0,true,false
+Silla,Chair in Spanish,Vocabulary,2025-11-12 00:00:00,2025-08-07 00:03:24,0,2.5,0,true,false
+Chaise,Chair in French,Vocabulary,2025-11-13 00:00:00,2025-08-07 00:03:25,0,2.5,0,true,false
+Stuhl,Chair in German,Vocabulary,2025-11-14 00:00:00,2025-08-07 00:03:26,0,2.5,0,true,false
+Sedia,Chair in Italian,Vocabulary,2025-11-15 00:00:00,2025-08-07 00:03:27,0,2.5,0,true,false
+Mesa,Table in Spanish,Vocabulary,2025-11-16 00:00:00,2025-08-07 00:03:28,0,2.5,0,true,false
+Table,Table in French,Vocabulary,2025-11-17 00:00:00,2025-08-07 00:03:29,0,2.5,0,true,false
+Tisch,Table in German,Vocabulary,2025-11-18 00:00:00,2025-08-07 00:03:30,0,2.5,0,true,false
+Tavolo,Table in Italian,Vocabulary,2025-11-19 00:00:00,2025-08-07 00:03:31,0,2.5,0,true,false
+Escuela,School in Spanish,Vocabulary,2025-11-20 00:00:00,2025-08-07 00:03:32,0,2.5,0,true,false
+École,School in French,Vocabulary,2025-11-21 00:00:00,2025-08-07 00:03:33,0,2.5,0,true,false
+Schule,School in German,Vocabulary,2025-11-22 00:00:00,2025-08-07 00:03:34,0,2.5,0,true,false
+Scuola,School in Italian,Vocabulary,2025-11-23 00:00:00,2025-08-07 00:03:35,0,2.5,0,true,false
+Ciudad,City in Spanish,Vocabulary,2025-11-24 00:00:00,2025-08-07 00:03:36,0,2.5,0,true,false
+Ville,City in French,Vocabulary,2025-11-25 00:00:00,2025-08-07 00:03:37,0,2.5,0,true,false
