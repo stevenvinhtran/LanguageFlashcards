@@ -42,7 +42,7 @@ public class SpacedRepetition {
             relearningPass(flashcard, dummyFlashcards);
         } else {
             flashcard.setInterval((int)Math.round(flashcard.getInterval() * flashcard.getEaseFactor()));
-            flashcard.setReviewDate(LocalDateTime.now().plusDays(flashcard.getInterval()));
+            flashcard.setReviewDate(LocalDateTime.now().withHour(0).withMinute(0).withSecond(0).plusDays(flashcard.getInterval()));
             flashcard.setIsRelearning(false);
             dummyFlashcards.remove(0);
         }
@@ -86,7 +86,7 @@ public class SpacedRepetition {
             relearningPass(flashcard, dummyFlashcards);
         } else {
             flashcard.setInterval((int)Math.round(flashcard.getInterval() * flashcard.getEaseFactor()));
-            flashcard.setReviewDate(LocalDateTime.now().plusDays(flashcard.getInterval()));
+            flashcard.setReviewDate(LocalDateTime.now().withHour(0).withMinute(0).withSecond(0).plusDays(flashcard.getInterval()));
             flashcard.setIsRelearning(false);
             dummyFlashcards.remove(0);
         }
@@ -139,8 +139,8 @@ public class SpacedRepetition {
             if (i == flashcard.getRepetitions() - 1) {
                 // If the step is greater or equal to a day
                 if (learningSteps[i] >= 1440) {
-                    flashcard.setInterval((learningSteps[i]/1440) + 1);
-                    flashcard.setReviewDate(LocalDateTime.now().plusDays(flashcard.getInterval()));
+                    flashcard.setInterval(learningSteps[i]/1440);
+                    flashcard.setReviewDate(LocalDateTime.now().withHour(0).withMinute(0).withSecond(0).plusDays(flashcard.getInterval()));
                     dummyFlashcards.remove(0);
                 } else {
                     flashcard.setInterval(0);
@@ -164,7 +164,7 @@ public class SpacedRepetition {
                 // If the step is greater or equal to a day
                 if (relearningSteps[i] >= 1440) {
                     flashcard.setInterval(relearningSteps[i]/1440);
-                    flashcard.setReviewDate(LocalDateTime.now().plusDays(flashcard.getInterval()));
+                    flashcard.setReviewDate(LocalDateTime.now().withHour(0).withMinute(0).withSecond(0).plusDays(flashcard.getInterval()));
                     dummyFlashcards.remove(0);
                 } else {
                     flashcard.setInterval(0);
@@ -177,6 +177,53 @@ public class SpacedRepetition {
                     dummyFlashcard.setIsRelearning(false);
                 }
             }
+        }
+    }
+
+    public static String predictEasyInterval(Flashcard flashcard) {
+        double easeFactor = Math.min(flashcard.getEaseFactor() + (0.1 * (flashcard.getRepetitions() + 1)), 3.0);
+        int newIntervalMinutes = calculateProjectedInterval(flashcard, easeFactor);
+        return formatInterval(flashcard, newIntervalMinutes);
+    }
+
+    public static String predictPassInterval(Flashcard flashcard) {
+        double easeFactor = Math.min(flashcard.getEaseFactor() + (0.1 * (flashcard.getRepetitions() + 1)), 2.5);
+        int newIntervalMinutes = calculateProjectedInterval(flashcard, easeFactor);
+        return formatInterval(flashcard, newIntervalMinutes);
+    }
+
+    public static String predictFailInterval(Flashcard flashcard) {
+        return "10 minutes";
+    }
+
+    private static int calculateProjectedInterval(Flashcard flashcard, double easeFactor) {
+        int repetitions = flashcard.getRepetitions() + 1;
+
+        if (flashcard.getIsNewCard()) {
+            return learningSteps.length > 0 ? learningSteps[0] : 30; // First learning step
+        } else if (!flashcard.getIsRelearning() && repetitions <= learningSteps.length) {
+            return learningSteps[repetitions - 1]; // Current learning step
+        } else if (flashcard.getIsRelearning() && repetitions <= relearningSteps.length) {
+            return relearningSteps[repetitions - 1]; // Current relearning step
+        } else {
+            return (int) Math.round((flashcard.getInterval() * 1440) * easeFactor); // Normal interval in minutes
+        }
+    }
+
+    private static String formatInterval(Flashcard flashcard, int intervalMinutes) {
+        // Convert minutes to days for easier formatting
+        double days = intervalMinutes / (24.0 * 60.0);
+        if (intervalMinutes < 1440) { // Less than 1 day
+            return intervalMinutes + (intervalMinutes == 1 ? " minute" : " minutes");
+        } else if (days < 30) {
+            int wholeDays = (int) Math.round(days);
+            return wholeDays + (wholeDays == 1 ? " day" : " days");
+        } else if (days < 365) {
+            double months = Math.round(days / 30.0 * 10) / 10.0;
+            return months + (months == 1.0 ? " month" : " months");
+        } else {
+            double years = Math.round(days / 365.0 * 10) / 10.0;
+            return years + (years == 1.0 ? " year" : " years");
         }
     }
 }

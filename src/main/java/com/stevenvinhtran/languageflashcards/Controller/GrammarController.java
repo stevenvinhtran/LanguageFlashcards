@@ -122,6 +122,9 @@ public class GrammarController {
 
         termText.setText(flashcards.get(dummyFlashcard.getIndex()).getTerm());
         definitionText.setText(flashcards.get(dummyFlashcard.getIndex()).getDefinition());
+        easyDate.setText(SpacedRepetition.predictEasyInterval(flashcards.get(dummyFlashcard.getIndex())));
+        passDate.setText(SpacedRepetition.predictPassInterval(flashcards.get(dummyFlashcard.getIndex())));
+        failDate.setText(SpacedRepetition.predictFailInterval(flashcards.get(dummyFlashcard.getIndex())));
 
         newText.setUnderline(false);
         learningText.setUnderline(false);
