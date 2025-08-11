@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="settingsAnchorPane" minHeight="720.0" minWidth="960.0" prefHeight="720.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.stevenvinhtran.languageflashcards.Controller.SettingsController">
+<AnchorPane fx:id="settingsAnchorPane" minHeight="720.0" minWidth="960.0" prefHeight="720.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.stevenvinhtran.languageflashcards.Controller.SettingsController">
    <children>
       <Button fx:id="backButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#returnToBrowserScene" text="←" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
          <font>
@@ -19,7 +19,7 @@
             <Font size="40.0" />
          </font>
       </Label>
-      <TextField fx:id="learningStepsTextField" layoutX="72.0" layoutY="167.0" prefHeight="25.0" prefWidth="817.0" promptText="30,1440,4320 (30 minutes, 1 day, 3 days)" AnchorPane.leftAnchor="72.0" AnchorPane.rightAnchor="71.0" />
+      <TextField fx:id="learningStepsTextField" layoutX="72.0" layoutY="167.0" prefHeight="25.0" prefWidth="817.0" promptText="30,1440,4320 (30 minutes, 1 day, 3 days)" AnchorPane.leftAnchor="72.0" AnchorPane.rightAnchor="71.0" AnchorPane.topAnchor="167.0" />
       <Label fx:id="learningStepsLabel" layoutX="72.0" layoutY="150.0" text="Learning Steps (in minutes) (strongly advised that last step is at least a day)" AnchorPane.leftAnchor="72.0" AnchorPane.topAnchor="150.0" />
       <Spinner fx:id="vocabularySpinner" editable="true" layoutX="245.0" layoutY="294.0" AnchorPane.leftAnchor="245.0" AnchorPane.topAnchor="294.0" />
       <Label fx:id="vocabularyLabel" layoutX="72.0" layoutY="298.0" text="New Vocabulary Cards per Day" AnchorPane.leftAnchor="72.0" AnchorPane.topAnchor="298.0" />
@@ -30,7 +30,7 @@
             <Font size="30.0" />
          </font>
       </Button>
-      <TextField fx:id="relearningStepsTextField" layoutX="72.0" layoutY="228.0" prefHeight="25.0" prefWidth="817.0" promptText="30,1440 (30 minutes, 1 day)" />
-      <Label fx:id="relearningStepsLabel" layoutX="72.0" layoutY="211.0" text="Relearning Steps (in minutes) (strongly advised that last step is at least a day)" />
+      <TextField fx:id="relearningStepsTextField" layoutX="72.0" layoutY="228.0" prefHeight="25.0" prefWidth="817.0" promptText="30,1440 (30 minutes, 1 day)" AnchorPane.leftAnchor="72.0" AnchorPane.rightAnchor="70.39999999999998" AnchorPane.topAnchor="228.0" />
+      <Label fx:id="relearningStepsLabel" layoutX="72.0" layoutY="211.0" text="Relearning Steps (in minutes) (strongly advised that last step is at least a day)" AnchorPane.leftAnchor="72.0" AnchorPane.topAnchor="211.0" />
    </children>
 </AnchorPane>
