@@ -3,7 +3,6 @@ package com.stevenvinhtran.languageflashcards.Controller;
 import com.stevenvinhtran.languageflashcards.Model.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
@@ -16,28 +15,16 @@ public class GrammarController {
     private int learningNum = 0;
     private int reviewingNum = 0;
 
-    @FXML
-    private Button backButton;
-    @FXML
-    private Button easyButton;
-    @FXML
-    private Text easyDate;
-    @FXML
-    private Button failButton;
-    @FXML
-    private Text failDate;
-    @FXML
-    private Button passButton;
-    @FXML
-    private Text passDate;
-    @FXML
-    private Button revealButton;
-    @FXML
-    private Text termText;
-    @FXML
-    private Text definitionText;
-    @FXML
-    private AnchorPane grammarAnchorPane;
+    @FXML private Button easyButton;
+    @FXML private Text easyDate;
+    @FXML private Button failButton;
+    @FXML private Text failDate;
+    @FXML private Button passButton;
+    @FXML private Text passDate;
+    @FXML private Button revealButton;
+
+    @FXML private Text termText;
+    @FXML private Text definitionText;
 
     @FXML private Text newText;
     @FXML private Text learningText;

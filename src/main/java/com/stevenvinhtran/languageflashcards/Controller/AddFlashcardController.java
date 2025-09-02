@@ -6,7 +6,6 @@ import com.stevenvinhtran.languageflashcards.Model.SceneSwitcher;
 import com.stevenvinhtran.languageflashcards.Model.Settings;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
 import javax.swing.*;
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -15,22 +14,8 @@ public class AddFlashcardController {
     private Flashcard flashcard;
     private LocalDateTime now = LocalDateTime.now();
 
-    @FXML
-    private Button backButton;
-    @FXML
-    private Label definitionLabel;
-    @FXML
-    private TextArea definitionTextArea;
-    @FXML
-    private AnchorPane addFlashcardAnchorPane;
-    @FXML
-    private Button createFlashcardButton;
-    @FXML
-    private Label termLabel;
-    @FXML
-    private TextField termTextField;
-    @FXML
-    private Label typeLabel;
+    @FXML private TextArea definitionTextArea;
+    @FXML private TextField termTextField;
     @FXML private MenuButton typeMenuButton;
     @FXML private MenuItem vocabularyMenuItem;
     @FXML private MenuItem grammarMenuItem;

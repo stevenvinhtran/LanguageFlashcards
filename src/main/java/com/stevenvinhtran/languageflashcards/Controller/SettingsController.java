@@ -5,36 +5,15 @@ import com.stevenvinhtran.languageflashcards.Model.Settings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 
 public class SettingsController {
 
-    @FXML
-    private Button backButton;
-    @FXML
-    private Label grammarLabel;
-    @FXML
-    private Spinner<Integer> grammarSpinner;
-    @FXML
-    private Label learningStepsLabel;
-    @FXML
-    private TextField learningStepsTextField;
-    @FXML
-    private Label relearningStepsLabel;
-    @FXML
-    private TextField relearningStepsTextField;
-    @FXML
-    private Button saveChangesButton;
-    @FXML
-    private AnchorPane settingsAnchorPane;
-    @FXML
-    private Label settingsLabel;
-    @FXML
-    private Label vocabularyLabel;
-    @FXML
-    private Spinner<Integer> vocabularySpinner;
+    @FXML private Spinner<Integer> grammarSpinner;
+    @FXML private TextField learningStepsTextField;
+    @FXML private TextField relearningStepsTextField;
+    @FXML private Spinner<Integer> vocabularySpinner;
 
     @FXML
     void onSaveChangesClick(ActionEvent event) throws IOException {

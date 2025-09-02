@@ -8,7 +8,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
 import java.time.LocalDate;
@@ -19,25 +18,8 @@ import java.io.IOException;
 public class BrowserController {
     private final DateTimeFormatter displayFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
-    @FXML
-    private Button addButton;
-    @FXML
-    private Button backButton;
-    @FXML
-    private AnchorPane browserAnchorPane;
-    @FXML
-    private Button deleteButton;
-    @FXML
-    private Button settingsButton;
-    @FXML
-    private Button editButton;
-    @FXML
-    private Label sortByLabel;
-
-    @FXML
-    private TextField searchField;
-    @FXML
-    private Text numberOfCardsText;
+    @FXML private TextField searchField;
+    @FXML private Text numberOfCardsText;
 
     @FXML private SplitMenuButton sortByMenu;
     @FXML private MenuItem todayMenuItem;

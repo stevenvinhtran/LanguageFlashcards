@@ -6,46 +6,16 @@ import com.stevenvinhtran.languageflashcards.Model.SceneSwitcher;
 import com.stevenvinhtran.languageflashcards.Model.Settings;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.text.Text;
 import java.io.IOException;
 
 public class EditFlashcardController {
     private Flashcard flashcard;
     private Flashcard oldFlashcard;
 
-    @FXML
-    private Button backButton;
-    @FXML
-    private Label definitionLabel;
-    @FXML
-    private TextArea definitionTextArea;
-    @FXML
-    private AnchorPane editFlashcardAnchorPane;
-    @FXML
-    private Text reviewDateLabel;
-    @FXML
-    private DatePicker reviewDatePicker;
-    @FXML
-    private Button saveChangesButton;
-    @FXML
-    private Label termLabel;
-    @FXML
-    private TextField termTextField;
-    @FXML
-    private Label typeLabel;
-    @FXML
-    private Label sm2SettingsLabel;
-    @FXML
-    private Label sm2WarningLabel;
-    @FXML
-    private Text repetitionsText;
-    @FXML
-    private Text easeFactorText;
-    @FXML
-    private Text intervalText;
-    @FXML
-    private Text defaultsText;
+    @FXML private TextArea definitionTextArea;
+    @FXML private DatePicker reviewDatePicker;
+    @FXML private TextField termTextField;
+
     @FXML private MenuButton typeMenuButton;
     @FXML private MenuItem vocabularyMenuItem;
     @FXML private MenuItem grammarMenuItem;
