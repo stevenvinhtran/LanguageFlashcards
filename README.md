@@ -42,11 +42,11 @@ Bonjour,Hello,Vocabulary,2025-08-09 00:00:38,2023-11-01 12:00:00,3,2.5,14,false,
 
 Jar executable has not been constructed yet. If you want to play around with the code, do the following.
 
-# 1) Clone
+### 1) Clone
 ```bash
 git clone https://github.com/stevenvinhtran/LanguageFlashcards.git
 cd LanguageFlashcards
 ```
-# 2) Run from IDE (IntelliJ recommended)
+### 2) Run from IDE (IntelliJ recommended)
 - Open the project, then run the application's main class (with a public static void main).
 
